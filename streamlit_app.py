@@ -1,0 +1,13 @@
+"""
+Streamlit Cloud Entrypoint for Prof. Anna Sovereign Agent
+"""
+
+import os
+import sys
+
+# Ensure root directory is in sys.path
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
+from anna.web.app import *

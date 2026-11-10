@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prof. Anna • World-Class All-Rounder Sovereign Professor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #FAF9F6; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #0F172A; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-header { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(16px); }
+        .tab-btn.active { background-color: #0F172A; color: #FFFFFF; font-weight: 600; }
+        .tab-btn:not(.active) { color: #64748B; background-color: transparent; }
+        .tab-btn:not(.active):hover { background-color: #F1F5F9; color: #0F172A; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Top Navigation Header -->
+    <header class="glass-header text-white sticky top-0 z-50 border-b border-white/10 px-6 py-4 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-teal-500/20 border border-teal-500/40 flex items-center justify-center text-xl font-bold text-teal-400">
+                    🎓
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-mono font-bold tracking-widest text-teal-400 uppercase">Prof. Anna Engine</span>
+                        <span class="text-[10px] bg-teal-900/60 text-teal-300 px-2 py-0.5 rounded-full border border-teal-700/50">All-Rounder Sovereign</span>
+                    </div>
+                    <h1 class="text-lg font-bold tracking-tight text-white">Universal Academic Sovereign Web App</h1>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3 text-xs">
+                <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">UPSC • NEET • JEE • CA • AI • Law</span>
+                <span class="px-3 py-1.5 rounded-lg bg-teal-950 text-teal-300 font-bold border border-teal-800">100% Full Proofs</span>
+                <a href="https://github.com/adityanimbalkar9699-max/prof-anna-study-agent" target="_blank" class="px-3 py-1.5 rounded-lg bg-white text-slate-900 font-bold hover:bg-slate-100 transition">GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 py-8 flex-1 flex flex-col md:flex-row gap-8">
+        
+        <!-- Sidebar Navigation Tabs -->
+        <aside class="w-full md:w-72 flex-shrink-0">
+            <div class="bg-white rounded-2xl border border-slate-200 p-3 shadow-sm sticky top-24">
+                <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3 py-2">Sovereign Engines</div>
+                <nav class="space-y-1" id="nav-tabs">
+                    <button onclick="switchTab('omni')" class="tab-btn active w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                        <span>🌍</span> Universal Answer (UPSC/NEET/CA)
+                    </button>
+                    <button onclick="switchTab('solve')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                        <span>📝</span> Assignment Solver &amp; Proofs
+                    </button>
+                    <button onclick="switchTab('check')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                        <span>🔍</span> Solution Grader &amp; "Cheque"
+                    </button>
+                    <button onclick="switchTab('pdf')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                        <span>📄</span> Anti-AI Luxury PDF Studio
+                    </button>
+                    <button onclick="switchTab('diagram')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                        <span>📐</span> Diagram Studio + Links
+                    </button>
+                    <button onclick="switchTab('sih')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                        <span>📊</span> SIH Hackathon &amp; PPT Cloner
+                    </button>
+                    <button onclick="switchTab('paper')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                        <span>📜</span> IEEE Access Paper Synthesizer
+                    </button>
+                    <button onclick="switchTab('exam')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                        <span>🎯</span> Pareto 80/20 Exam Forensics
+                    </button>
+                    <button onclick="switchTab('video')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                        <span>🎬</span> 60fps Video Script Studio
+                    </button>
+                    <button onclick="switchTab('memory')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                        <span>🧠</span> Spatial Memory Palace Studio
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Dynamic Content Panel -->
+        <main class="flex-1 bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
+
+            <!-- 1. Universal Answer Formulator Panel -->
+            <section id="panel-omni" class="tab-panel">
+                <div class="mb-6">
+                    <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">Multi-Discipline Engine</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-1">Universal Mark-Targeted Answer Formulator</h2>
+                    <p class="text-xs text-slate-500 mt-1">Generates complete, mark-securing answers with Definitions, Labeled Diagrams, Mechanisms, Case Laws &amp; Way Forward.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Examination Question Statement:</label>
+                        <textarea id="omni-question" class="w-full text-sm p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:outline-none" rows="4">Examine the doctrine of Separation of Powers under the Indian Constitution and its contemporary judicial developments.</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Target Marks Weightage:</label>
+                        <select id="omni-marks" class="w-full text-sm p-3 border border-slate-300 rounded-xl mb-3 focus:outline-none">
+                            <option value="2">2 Marks (Short / Objective)</option>
+                            <option value="5">5 Marks (Medium / Concept)</option>
+                            <option value="8" selected>8 Marks (Full University Standard)</option>
+                            <option value="10">10 Marks (UPSC 150 Words)</option>
+                            <option value="15">15 Marks (UPSC 250 Words / Long)</option>
+                        </select>
+                        
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Domain Discipline:</label>
+                        <select id="omni-domain" class="w-full text-sm p-3 border border-slate-300 rounded-xl focus:outline-none">
+                            <option value="">Auto-Detect</option>
+                            <option value="UPSC_CIVIL_SERVICES">🏛️ UPSC / MPSC Civil Services</option>
+                            <option value="MEDICAL_NEET">🧬 Medical &amp; NEET Biology</option>
+                            <option value="COMMERCE_ACCOUNTING">💰 Commerce, Accounting &amp; CA</option>
+                            <option value="JEE_PHYSICAL_SCIENCES">⚛️ JEE Physical Sciences (Physics/Chem)</option>
+                            <option value="AI_MACHINE_LEARNING">💻 Computer Science &amp; Deep Learning</option>
+                            <option value="LAW_LEGAL">⚖️ Law &amp; Jurisprudence</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button onclick="submitOmniSolve()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition flex items-center gap-2">
+                    <span>⚡ Synthesize 100% Mark-Securing Solution</span>
+                </button>
+
+                <div id="omni-output" class="mt-8 hidden">
+                    <!-- Rendered output -->
+                </div>
+            </section>
+
+            <!-- 2. Assignment Solver Panel -->
+            <section id="panel-solve" class="tab-panel hidden">
+                <div class="mb-6">
+                    <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">Formal Proof Engine</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-1">Assignment Solver &amp; Proof Verifier</h2>
+                    <p class="text-xs text-slate-500 mt-1">Solves algorithms, mathematics, and systems with inductive verification and asymptotic tightness.</p>
+                </div>
+                <textarea id="solve-problem" class="w-full text-sm p-3.5 border border-slate-300 rounded-xl mb-4" rows="3">Solve recurrence relation T(n) = 2T(n/2) + Theta(n) with base case T(1) = 1. Prove tight asymptotic bound.</textarea>
+                <button onclick="submitSolve()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
+                    Derive Formal Mathematical Proof
+                </button>
+                <div id="solve-output" class="mt-8 hidden"></div>
+            </section>
+
+            <!-- 3. Solution Grader & "Cheque" Panel -->
+            <section id="panel-check" class="tab-panel hidden">
+                <div class="mb-6">
+                    <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">Academic Auditor</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-1">Solution Grader &amp; Rubric Auditor ("Cheque")</h2>
+                    <p class="text-xs text-slate-500 mt-1">Audit draft answers against university grading rubrics, detect missing boundary conditions, and get awarded scores.</p>
+                </div>
+                <div class="space-y-4 mb-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Problem Statement:</label>
+                        <input id="check-problem" type="text" class="w-full text-sm p-3 border border-slate-300 rounded-xl" value="Solve recurrence T(n) = 2T(n/2) + n">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Student's Draft Solution:</label>
+                        <textarea id="check-solution" class="w-full text-sm p-3.5 border border-slate-300 rounded-xl" rows="4">Given T(n) = 2T(n/2) + n.
+By Master Theorem, a=2, b=2, so n^(log2 2) = n.
+Since f(n) = n, Case 2 applies.
+Therefore, T(n) = Theta(n log n). Q.E.D.</textarea>
+                    </div>
+                </div>
+                <button onclick="submitCheck()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
+                    Run Official Rubric Audit
+                </button>
+                <div id="check-output" class="mt-8 hidden"></div>
+            </section>
+
+            <!-- 4. Anti-AI PDF Studio Panel -->
+            <section id="panel-pdf" class="tab-panel hidden">
+                <div class="mb-6">
+                    <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">Luxury Publication Engine</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-1">Anti-AI Luxury Publication-Grade PDF Generator</h2>
+                    <p class="text-xs text-slate-500 mt-1">Generates handcrafted PDFs with editorial typography, hairline rules, rich obsidian tones, and zero AI clichés.</p>
+                </div>
+                <div class="space-y-4 mb-4 max-w-xl">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Assignment Topic / Report Title:</label>
+                        <input id="pdf-topic" type="text" class="w-full text-sm p-3 border border-slate-300 rounded-xl" value="Divide and Conquer Master Theorem Analysis">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Academic Subject:</label>
+                        <input id="pdf-subject" type="text" class="w-full text-sm p-3 border border-slate-300 rounded-xl" value="Design and Analysis of Algorithms">
+                    </div>
+                </div>
+                <button onclick="submitPdf()" class="px-6 py-3 bg-teal-800 text-white text-xs font-bold rounded-xl hover:bg-teal-700 transition">
+                    📄 Compile Handcrafted Publication PDF
+                </button>
+                <div id="pdf-output" class="mt-6 hidden"></div>
+            </section>
+
+            <!-- 5. Universal Diagram Studio Panel -->
+            <section id="panel-diagram" class="tab-panel hidden">
+                <div class="mb-6">
+                    <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">Vector Graphics &amp; Fallbacks</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-1">Universal Diagram Studio + Live References</h2>
+                    <p class="text-xs text-slate-500 mt-1">Renders high-res vector diagrams across Medical, UPSC, CA, Physics, and AI with direct links to PubMed, NCERT, Nature &amp; UPSC.</p>
+                </div>
+                <div class="max-w-xl mb-4">
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Concept or Schematic Topic:</label>
+                    <input id="diag-topic" type="text" class="w-full text-sm p-3 border border-slate-300 rounded-xl mb-2" value="Nephron Countercurrent Mechanism">
+                    <div class="flex gap-2 flex-wrap">
+                        <button onclick="document.getElementById('diag-topic').value='Nephron'; submitDiagram();" class="text-[11px] bg-slate-100 hover:bg-slate-200 px-2.5 py-1 rounded-lg text-slate-700">Nephron (Med)</button>
+                        <button onclick="document.getElementById('diag-topic').value='Separation of Powers'; submitDiagram();" class="text-[11px] bg-slate-100 hover:bg-slate-200 px-2.5 py-1 rounded-lg text-slate-700">Separation of Powers (UPSC)</button>
+                        <button onclick="document.getElementById('diag-topic').value='Balance Sheet'; submitDiagram();" class="text-[11px] bg-slate-100 hover:bg-slate-200 px-2.5 py-1 rounded-lg text-slate-700">Balance Sheet (CA)</button>
+                        <button onclick="document.getElementById('diag-topic').value='Carnot Cycle'; submitDiagram();" class="text-[11px] bg-slate-100 hover:bg-slate-200 px-2.5 py-1 rounded-lg text-slate-700">Carnot Cycle (JEE)</button>
+                        <button onclick="document.getElementById('diag-topic').value='Transformer Attention'; submitDiagram();" class="text-[11px] bg-slate-100 hover:bg-slate-200 px-2.5 py-1 rounded-lg text-slate-700">Transformer (AI)</button>
+                    </div>
+                </div>
+                <button onclick="submitDiagram()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
+                    Render Publication Diagram
+                </button>
+                <div id="diag-output" class="mt-8 hidden"></div>
+            </section>
+
+            <!-- 6. SIH Hackathon & PPT Cloner Panel -->
+            <section id="panel-sih" class="tab-panel hidden">
+                <div class="mb-6">
+                    <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">National Pitch Deck Engine</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-1">Smart India Hackathon (SIH) Optimizer &amp; PPT Cloner</h2>
+                    <p class="text-xs text-slate-500 mt-1">Analyzes presentations against the official AICTE / SIH jury scoring rubric, rewrites slides, and builds widescreen PPTX.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Project Title:</label>
+                        <input id="sih-title" type="text" class="w-full text-sm p-3 border border-slate-300 rounded-xl" value="Autonomous Edge AI Grid for Rural Water Leakage Detection">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Problem Statement ID (PS-ID):</label>
+                        <input id="sih-ps" type="text" class="w-full text-sm p-3 border border-slate-300 rounded-xl" value="SIH-2024-PS1482">
+                    </div>
+                </div>
+                <button onclick="submitSih()" class="px-6 py-3 bg-teal-800 text-white text-xs font-bold rounded-xl hover:bg-teal-700 transition">
+                    🏆 Run SIH Jury Audit &amp; Build Winning PPTX
+                </button>
+                <div id="sih-output" class="mt-8 hidden"></div>
+            </section>
+
+            <!-- 7. IEEE Access Research Paper Panel -->
+            <section id="panel-paper" class="tab-panel hidden">
+                <div class="mb-6">
+                    <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">Peer-Reviewed Standard</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-1">IEEE Access Two-Column Paper Synthesizer</h2>
+                    <p class="text-xs text-slate-500 mt-1">Drafts authentic IEEE Access compliant research papers with two-column LaTeX code and live HTML previews.</p>
+                </div>
+                <div class="max-w-xl mb-4">
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Research Topic:</label>
+                    <input id="paper-topic" type="text" class="w-full text-sm p-3 border border-slate-300 rounded-xl" value="Decentralized Edge Federated Learning under Asymmetric Partitions">
+                </div>
+                <button onclick="submitPaper()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
+                    Synthesize IEEE Access Paper
+                </button>
+                <div id="paper-output" class="mt-8 hidden"></div>
+            </section>
+
+            <!-- 8. Pareto 80/20 Exam Forensics Panel -->
+            <section id="panel-exam" class="tab-panel hidden">
+                <div class="mb-6">
+                    <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">PYQ Forensics Engine</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-1">Pareto 80/20 Exam Forensics &amp; Success Rate Checklist</h2>
+                    <p class="text-xs text-slate-500 mt-1">Isolate the top 20% high-frequency topics that historically generate 80% of total exam marks.</p>
+                </div>
+                <div class="max-w-md mb-4">
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">University Subject:</label>
+                    <select id="exam-subject" class="w-full text-sm p-3 border border-slate-300 rounded-xl">
+                        <option value="Operating Systems">Operating Systems (CS-301)</option>
+                        <option value="Design and Analysis of Algorithms">Design &amp; Analysis of Algorithms (CS-302)</option>
+                    </select>
+                </div>
+                <button onclick="submitExam()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
+                    🎯 Calculate 80/20 High-Yield Checklist
+                </button>
+                <div id="exam-output" class="mt-8 hidden"></div>
+            </section>
+
+            <!-- 9. Kinetic Video Script Panel -->
+            <section id="panel-video" class="tab-panel hidden">
+                <div class="mb-6">
+                    <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">Cinematic Studio</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-1">60fps Kinetic Video Script &amp; Storyboard Studio</h2>
+                    <p class="text-xs text-slate-500 mt-1">Timestamped video voiceover scripts with on-screen visual animation cues and interactive web presentations.</p>
+                </div>
+                <div class="max-w-xl mb-4">
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Presentation / Video Topic:</label>
+                    <input id="video-topic" type="text" class="w-full text-sm p-3 border border-slate-300 rounded-xl" value="Transformer Scaled Dot-Product Attention">
+                </div>
+                <button onclick="submitVideoScript()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
+                    🎬 Generate Cinematic Video Storyboard
+                </button>
+                <div id="video-output" class="mt-8 hidden"></div>
+            </section>
+
+            <!-- 10. Spatial Memory Palace Panel -->
+            <section id="panel-memory" class="tab-panel hidden">
+                <div class="mb-6">
+                    <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">Smart Work Pedagogy</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-1">Spatial Memory Palace &amp; Mnemonic Studio</h2>
+                    <p class="text-xs text-slate-500 mt-1">Phonetic acronyms and spatial Method of Loci walkthroughs for effortlessly memorizing long lists and articles.</p>
+                </div>
+                <div class="max-w-xl mb-4">
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Topic to Memorize:</label>
+                    <input id="memory-topic" type="text" class="w-full text-sm p-3 border border-slate-300 rounded-xl" value="12 Schedules of Indian Constitution">
+                </div>
+                <button onclick="submitMnemonic()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
+                    🧠 Construct Memory Palace Journey
+                </button>
+                <div id="memory-output" class="mt-8 hidden"></div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- App Logic Scripts -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            
+            const targetPanel = document.getElementById('panel-' + tabId);
+            if (targetPanel) targetPanel.classList.remove('hidden');
+            
+            event.currentTarget.classList.add('active');
+        }
+
+        async function submitOmniSolve() {
+            const out = document.getElementById('omni-output');
+            out.classList.remove('hidden');
+            out.innerHTML = '<div class="p-6 text-center text-xs font-mono text-slate-500">🎓 Prof. Anna is formulating your complete mark-securing answer...</div>';
+            
+            try {
+                const res = await fetch('/api/omni-solve', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        question: document.getElementById('omni-question').value,
+                        marks: document.getElementById('omni-marks').value,
+                        domain: document.getElementById('omni-domain').value || null
+                    })
+                });
+                const data = await res.json();
+                
+                let dimsHtml = '';
+                (data.core_working_or_provisions || []).forEach(d => {
+                    let pts = (d.details || []).map(p => `<li class="text-xs text-slate-600 mb-1">• ${p}</li>`).join('');
+                    dimsHtml += `
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-3">
+                            <h4 class="text-xs font-bold text-slate-900 mb-2">${d.dimension}</h4>
+                            <ul class="list-none">${pts}</ul>
+                        </div>
+                    `;
+                });
+
+                let casesHtml = (data.applications_and_case_laws || []).map(c => `<div class="text-xs text-slate-700 mb-1 font-medium">✓ ${c}</div>`).join('');
+
+                out.innerHTML = `
+                    <div class="border border-teal-200 bg-teal-50/40 rounded-2xl p-6 mt-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="px-2.5 py-1 bg-teal-800 text-white rounded-lg text-[10px] font-bold uppercase tracking-wider">${data.field_domain} • ${data.target_marks} Marks</span>
+                            <span class="text-xs text-slate-500 font-medium">${data.rubric_strategy.recommended_words}</span>
+                        </div>
+                        
+                        <h3 class="text-sm font-bold uppercase text-slate-900 mb-1">I. Context &amp; Governing Axiom</h3>
+                        <p class="text-xs text-slate-700 leading-relaxed mb-2">${data.introduction}</p>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 text-xs font-mono text-teal-800 mb-4">
+                            <b>Foundation:</b> ${data.governing_statute_or_theory}
+                        </div>
+
+                        <h3 class="text-sm font-bold uppercase text-slate-900 mb-1">II. Required Schematic Diagram</h3>
+                        <div class="bg-white p-3.5 rounded-lg border border-slate-200 mb-4">
+                            <p class="text-xs font-bold text-slate-800">${data.diagram_concept}</p>
+                            <p class="text-xs text-slate-500 italic mt-0.5">${data.diagram_description}</p>
+                        </div>
+
+                        <h3 class="text-sm font-bold uppercase text-slate-900 mb-2">III. Comprehensive Working Body</h3>
+                        ${dimsHtml}
+
+                        <h3 class="text-sm font-bold uppercase text-slate-900 mb-1">IV. Real-World Applications &amp; Case Laws</h3>
+                        <div class="bg-white p-3.5 rounded-lg border border-slate-200 mb-4">
+                            ${casesHtml}
+                        </div>
+
+                        <div class="bg-amber-50 border border-amber-200 p-3.5 rounded-lg text-xs text-amber-900 mb-4">
+                            ⚠️ <b>Examiner Trap:</b> ${data.examiner_trap_warning}
+                        </div>
+
+                        <div class="bg-emerald-950 text-emerald-100 p-4 rounded-xl text-xs leading-relaxed">
+                            <b class="text-emerald-400 uppercase tracking-wider block mb-1">Way Forward / Conclusion (Full Marks Secured)</b>
+                            ${data.conclusion_way_forward}
+                        </div>
+                    </div>
+                `;
+            } catch (err) {
+                out.innerHTML = `<div class="p-4 bg-red-50 text-red-700 text-xs rounded-xl">Error: ${err.message}</div>`;
+            }
+        }
+
+        async function submitDiagram() {
+            const out = document.getElementById('diag-output');
+            out.classList.remove('hidden');
+            out.innerHTML = '<div class="p-6 text-center text-xs font-mono text-slate-500">Rendering vector schematic...</div>';
+            
+            try {
+                const res = await fetch('/api/diagram', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({topic: document.getElementById('diag-topic').value})
+                });
+                const data = await res.json();
+                
+                let visualHtml = data.svg_content ? data.svg_content : '<div class="p-4 text-xs">Vector schematic generated.</div>';
+                let fb = data.fallback_info || {};
+
+                out.innerHTML = `
+                    <div class="border border-slate-200 rounded-2xl p-6 bg-white">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-teal-700">${data.diagram_type}</span>
+                        <div class="my-4 border border-slate-100 rounded-xl overflow-hidden">${visualHtml}</div>
+                        
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h4 class="text-xs font-bold text-slate-900 mb-1">🌐 Authoritative Reference Source</h4>
+                            <p class="text-xs text-slate-600 mb-2">${fb.description || ''}</p>
+                            <div class="flex gap-4 text-xs font-medium">
+                                <a href="${fb.primary_url}" target="_blank" class="text-teal-700 hover:underline">🔗 Direct Reference Page (${fb.source})</a>
+                                <a href="${fb.diagram_url}" target="_blank" class="text-blue-700 hover:underline">🖼️ Direct High-Definition Diagram</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } catch (err) {
+                out.innerHTML = `<div class="p-4 bg-red-50 text-red-700 text-xs rounded-xl">Error: ${err.message}</div>`;
+            }
+        }
+
+        async function submitPdf() {
+            const out = document.getElementById('pdf-output');
+            out.classList.remove('hidden');
+            out.innerHTML = '<div class="p-4 text-xs text-slate-500">Compiling luxury PDF...</div>';
+            
+            const res = await fetch('/api/pdf', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    topic: document.getElementById('pdf-topic').value,
+                    subject: document.getElementById('pdf-subject').value
+                })
+            });
+            const data = await res.json();
+            out.innerHTML = `
+                <div class="p-4 bg-teal-50 border border-teal-200 rounded-xl flex justify-between items-center">
+                    <div>
+                        <div class="text-xs font-bold text-teal-900">✅ Handcrafted PDF Successfully Compiled</div>
+                        <div class="text-[11px] text-teal-700">${data.pdf_filename}</div>
+                    </div>
+                    <a href="${data.download_url}" target="_blank" class="px-4 py-2 bg-teal-800 text-white rounded-lg text-xs font-bold hover:bg-teal-700">Download PDF</a>
+                </div>
+            `;
+        }
+
+        async function submitSih() {
+            const out = document.getElementById('sih-output');
+            out.classList.remove('hidden');
+            out.innerHTML = '<div class="p-6 text-center text-xs font-mono text-slate-500">Evaluating against Smart India Hackathon jury rubrics...</div>';
+            
+            const res = await fetch('/api/sih', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    title: document.getElementById('sih-title').value,
+                    ps_id: document.getElementById('sih-ps').value
+                })
+            });
+            const data = await res.json();
+            out.innerHTML = `
+                <div class="border border-teal-200 bg-teal-50/30 rounded-2xl p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <div>
+                            <h3 class="text-base font-bold text-slate-900">${data.audit.project_title}</h3>
+                            <span class="text-xs text-slate-500">PS-ID: ${data.audit.problem_statement_id}</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-2xl font-bold text-teal-800">${data.audit.overall_sih_readiness_score}/100</span>
+                            <div class="text-[10px] text-teal-600 font-bold uppercase">Jury Readiness</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-4 mt-4">
+                        <a href="${data.pptx_download_url}" class="px-4 py-2 bg-slate-900 text-white text-xs font-bold rounded-lg hover:bg-slate-800">📥 Download 16:9 Widescreen PPTX</a>
+                        <a href="${data.html5_download_url}" target="_blank" class="px-4 py-2 bg-teal-800 text-white text-xs font-bold rounded-lg hover:bg-teal-700">🖥️ View Interactive 60fps Deck</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function submitPaper() {
+            const out = document.getElementById('paper-output');
+            out.classList.remove('hidden');
+            out.innerHTML = '<div class="p-4 text-xs text-slate-500">Synthesizing IEEE Access paper...</div>';
+            
+            const res = await fetch('/api/paper', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({topic: document.getElementById('paper-topic').value})
+            });
+            const data = await res.json();
+            out.innerHTML = `
+                <div class="border border-slate-200 rounded-xl p-5 bg-slate-50">
+                    <h4 class="text-sm font-bold text-slate-900 mb-1">${data.title}</h4>
+                    <span class="text-xs text-slate-500 mb-3 block">DOI: ${data.doi_preview}</span>
+                    <div class="flex gap-3">
+                        <a href="${data.latex_download_url}" class="px-3 py-1.5 bg-slate-900 text-white rounded text-xs font-bold">Download LaTeX (.tex)</a>
+                        <a href="${data.html_download_url}" target="_blank" class="px-3 py-1.5 bg-teal-800 text-white rounded text-xs font-bold">View Publication HTML</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function submitExam() {
+            const out = document.getElementById('exam-output');
+            out.classList.remove('hidden');
+            out.innerHTML = '<div class="p-4 text-xs text-slate-500">Mining 5-year PYQs...</div>';
+            
+            const res = await fetch('/api/exam', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({subject: document.getElementById('exam-subject').value})
+            });
+            const data = await res.json();
+            
+            let listHtml = (data.high_yield_topics || []).map(t => `
+                <div class="p-3 bg-white rounded-lg border border-slate-200 mb-2 flex justify-between items-center text-xs">
+                    <div>
+                        <span class="font-bold text-slate-900">[${t.recurrence_prob} Prob] ${t.concept}</span>
+                        <div class="text-slate-500 text-[11px]">${t.unit} • ${t.type}</div>
+                    </div>
+                    <span class="font-bold text-teal-800">${t.marks} Marks</span>
+                </div>
+            `).join('');
+
+            out.innerHTML = `
+                <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-sm font-bold text-slate-900">${data.subject_name} (${data.subject_code})</h3>
+                        <span class="text-sm font-bold text-teal-800">${data.predicted_success_rate}% Success Rate</span>
+                    </div>
+                    ${listHtml}
+                </div>
+            `;
+        }
+
+        async function submitVideoScript() {
+            const out = document.getElementById('video-output');
+            out.classList.remove('hidden');
+            out.innerHTML = '<div class="p-4 text-xs text-slate-500">Writing video storyboard...</div>';
+            
+            const res = await fetch('/api/video-script', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({topic: document.getElementById('video-topic').value})
+            });
+            const data = await res.json();
+            out.innerHTML = `
+                <div class="border border-slate-200 rounded-xl p-5 bg-slate-50">
+                    <h4 class="text-sm font-bold text-slate-900 mb-2">🎬 Storyboard: ${data.topic} (${data.estimated_duration})</h4>
+                    <div class="flex gap-3">
+                        <a href="${data.script_download_url}" class="px-3 py-1.5 bg-slate-900 text-white rounded text-xs font-bold">Download Script (.md)</a>
+                        <a href="${data.deck_download_url}" target="_blank" class="px-3 py-1.5 bg-teal-800 text-white rounded text-xs font-bold">Launch 60fps Deck (.html)</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function submitMnemonic() {
+            const out = document.getElementById('memory-output');
+            out.classList.remove('hidden');
+            out.innerHTML = '<div class="p-4 text-xs text-slate-500">Constructing memory palace...</div>';
+            
+            const res = await fetch('/api/mnemonic', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({topic: document.getElementById('memory-topic').value})
+            });
+            const data = await res.json();
+            
+            let roomsHtml = (data.rooms || []).map(r => `
+                <div class="p-3 bg-white rounded-lg border border-slate-200 mb-2 text-xs">
+                    <span class="font-bold text-teal-800">${r.room} (Anchor: ${r.anchor})</span>
+                    <div class="text-slate-700 mt-1">${r.story}</div>
+                </div>
+            `).join('');
+
+            out.innerHTML = `
+                <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50">
+                    <h3 class="text-sm font-bold text-slate-900 mb-1">Mnemonic: <span class="text-teal-800">${data.acronym}</span></h3>
+                    <p class="text-xs text-slate-600 italic mb-4">"${data.hook}"</p>
+                    ${roomsHtml}
+                    <div class="text-xs text-amber-900 bg-amber-50 p-3 rounded-lg border border-amber-200 mt-3">
+                        💡 <b>Examiner Secret:</b> ${data.examiner_secret}
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
