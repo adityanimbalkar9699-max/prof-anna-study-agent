@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 440" width="100%" height="100%" style="background:#FAF9F6; font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#1E293B" />
+    </linearGradient>
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F766E" />
+      <stop offset="100%" stop-color="#0D9488" />
+    </linearGradient>
+    <filter id="subtleShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000000" flood-opacity="0.06"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#0D9488"/>
+    </marker>
+  </defs>
+
+  <!-- Title & Academic Header -->
+  <rect x="40" y="24" width="800" height="54" rx="8" fill="url(#headerGrad)" filter="url(#subtleShadow)"/>
+  <text x="60" y="58" font-size="18" font-weight="700" fill="#FFFFFF" letter-spacing="-0.02em">TRANSFORMER MULTI-HEAD ATTENTION - FORMAL SYSTEM ARCHITECTURE</text>
+  <text x="740" y="56" font-size="11" font-weight="500" fill="#94A3B8" letter-spacing="0.04em">PROF. ANNA ENGINE</text>
+
+  <!-- Block 1: Input / Ingestion Layer -->
+  <rect x="50" y="120" width="220" height="230" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" filter="url(#subtleShadow)"/>
+  <rect x="50" y="120" width="220" height="40" rx="10" fill="#F1F5F9"/>
+  <text x="70" y="145" font-size="14" font-weight="700" fill="#0F172A">1. Ingestion Layer</text>
+  <text x="70" y="185" font-size="12" fill="#475569">• Problem Formulation</text>
+  <text x="70" y="210" font-size="12" fill="#475569">• Constraint Extraction</text>
+  <text x="70" y="235" font-size="12" fill="#475569">• Axiom Formalization</text>
+  <text x="70" y="260" font-size="12" fill="#475569">• State Space Normalizer</text>
+  <rect x="70" y="290" width="180" height="34" rx="6" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <text x="85" y="312" font-size="11" font-family="monospace" fill="#0D9488">INPUT_TENSORS[X, Y]</text>
+
+  <!-- Arrow 1 to 2 -->
+  <path d="M 270 235 L 320 235" stroke="#0D9488" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Block 2: Computation / Core Reasoning Engine -->
+  <rect x="330" y="110" width="240" height="250" rx="10" fill="#FFFFFF" stroke="#0D9488" stroke-width="2" filter="url(#subtleShadow)"/>
+  <rect x="330" y="110" width="240" height="42" rx="10" fill="url(#tealGrad)"/>
+  <text x="350" y="136" font-size="14" font-weight="700" fill="#FFFFFF">2. Core Compute Core</text>
+  <text x="350" y="180" font-size="12" fill="#475569">• Proof of Invariants</text>
+  <text x="350" y="205" font-size="12" fill="#475569">• Analytical Step Solver</text>
+  <text x="350" y="230" font-size="12" fill="#475569">• Asymptotic Bound Engine</text>
+  <text x="350" y="255" font-size="12" fill="#475569">• KaTeX Math Synthesizer</text>
+  <rect x="350" y="285" width="200" height="46" rx="6" fill="#F0FDFA" stroke="#99F6E4"/>
+  <text x="365" y="306" font-size="11" font-weight="600" fill="#0F766E">Theta(n log n) Guaranteed</text>
+  <text x="365" y="322" font-size="10" fill="#0D9488">Inductive Verification Pass</text>
+
+  <!-- Arrow 2 to 3 -->
+  <path d="M 570 235 L 620 235" stroke="#0D9488" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Block 3: Verification & Output Delivery -->
+  <rect x="630" y="120" width="210" height="230" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" filter="url(#subtleShadow)"/>
+  <rect x="630" y="120" width="210" height="40" rx="10" fill="#F1F5F9"/>
+  <text x="650" y="145" font-size="14" font-weight="700" fill="#0F172A">3. Verified Synthesis</text>
+  <text x="650" y="185" font-size="12" fill="#475569">• Anti-AI Styled PDF</text>
+  <text x="650" y="210" font-size="12" fill="#475569">• IEEE Access Report</text>
+  <text x="650" y="235" font-size="12" fill="#475569">• SIH Pitch Slides</text>
+  <text x="650" y="260" font-size="12" fill="#475569">• 80/20 PYQ Matrix</text>
+  <rect x="650" y="290" width="170" height="34" rx="6" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <text x="665" y="312" font-size="11" font-family="monospace" fill="#2563EB">OUTPUT_PASSED_100%</text>
+
+  <!-- Footer Citation Note -->
+  <text x="50" y="405" font-size="11" font-weight="500" fill="#64748B">Verified Editorial Architectural Schematic • Zero AI Clichés • ISO/IEEE Compliant System Boundary</text>
+</svg>
