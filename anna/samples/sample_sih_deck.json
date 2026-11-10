@@ -1,0 +1,26 @@
+{
+  "hackathon": "Smart India Hackathon (SIH 2024 / 2025)",
+  "problem_statement_id": "SIH-2024-PS1482",
+  "ministry": "Ministry of Electronics and Information Technology (MeitY)",
+  "project_title": "Autonomous Distributed Edge AI Diagnostic Grid",
+  "lead": "Aditya Nimbalkar",
+  "mentor": "Prof. Anna",
+  "sample_raw_draft_slides": [
+    {
+      "title": "Problem Statement",
+      "bullets": [
+        "Rural healthcare clinics suffer from low doctor-patient ratios",
+        "Cloud models fail due to zero internet connectivity",
+        "High latency in emergency diagnostic triage"
+      ]
+    },
+    {
+      "title": "Our Solution",
+      "bullets": [
+        "Deploy lightweight AI on Raspberry Pi and ESP32 nodes",
+        "Sub-30ms offline diagnostic classification",
+        "Decentralized mesh sync when network is restored"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "assignment_id": "SPPU-CS-DAA-001",
+  "subject": "Design and Analysis of Algorithms",
+  "problem_statement": "Solve recurrence relation T(n) = 2T(n/2) + Theta(n) with base case T(1) = 1. Prove tight asymptotic bound using induction.",
+  "total_marks": 10,
+  "course": "B.E. Computer Engineering (Semester 6)",
+  "university": "Savitribai Phule Pune University"
+}

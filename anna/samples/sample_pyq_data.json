@@ -1,0 +1,31 @@
+{
+  "university": "Savitribai Phule Pune University (SPPU)",
+  "branch": "Computer Engineering",
+  "semester": "Semester 5 & 6",
+  "subjects": {
+    "Operating Systems": {
+      "code": "310242",
+      "total_marks": 70,
+      "high_yield_recurrence": [
+        {
+          "unit": "Unit 3: Deadlocks",
+          "topic": "Banker's Algorithm & Safe State Verification",
+          "frequency": "5/5 Years (100% Compulsory)",
+          "marks": 10
+        },
+        {
+          "unit": "Unit 4: Memory Management",
+          "topic": "Page Replacement (FIFO, LRU, Optimal) & Belady's Anomaly",
+          "frequency": "5/5 Years (100% Compulsory)",
+          "marks": 8
+        },
+        {
+          "unit": "Unit 2: Process Synchronization",
+          "topic": "Classical IPC Problems with Semaphores (Dining Philosophers, Reader-Writer)",
+          "frequency": "4/5 Years (80%)",
+          "marks": 8
+        }
+      ]
+    }
+  }
+}
