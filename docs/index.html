@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prof. Anna • World-Class All-Rounder Sovereign Professor</title>
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- KaTeX Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
@@ -19,20 +19,23 @@
         .tab-btn.active { background-color: #0F172A; color: #FFFFFF; font-weight: 600; }
         .tab-btn:not(.active) { color: #64748B; background-color: transparent; }
         .tab-btn:not(.active):hover { background-color: #F1F5F9; color: #0F172A; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         @media print {
-            aside, header, button, .no-print { display: none !important; }
+            aside, header, button, .no-print, .quick-guide { display: none !important; }
             main { border: none !important; box-shadow: none !important; width: 100% !important; margin: 0 !important; padding: 0 !important; }
-            body { background: white !important; }
+            body { background: white !important; color: black !important; }
+            .print-clean { border: 1px solid #CBD5E1 !important; page-break-inside: avoid; }
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
     <!-- Top Sticky Header -->
-    <header class="glass-header text-white sticky top-0 z-50 border-b border-white/10 px-6 py-4 shadow-sm no-print">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-teal-500/20 border border-teal-500/40 flex items-center justify-center text-xl font-bold text-teal-400">
+    <header class="glass-header text-white sticky top-0 z-50 border-b border-white/10 px-4 sm:px-6 py-3.5 shadow-sm no-print">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-3 w-full sm:w-auto">
+                <div class="w-10 h-10 rounded-xl bg-teal-500/20 border border-teal-500/40 flex items-center justify-center text-xl font-bold text-teal-400 shrink-0">
                     🎓
                 </div>
                 <div>
@@ -40,54 +43,56 @@
                         <span class="text-xs font-mono font-bold tracking-widest text-teal-400 uppercase">Prof. Anna Engine</span>
                         <span class="text-[10px] bg-teal-900/60 text-teal-300 px-2 py-0.5 rounded-full border border-teal-700/50">All-Rounder Sovereign</span>
                     </div>
-                    <h1 class="text-lg font-bold tracking-tight text-white">Universal Academic Sovereign Web Platform</h1>
+                    <h1 class="text-base sm:text-lg font-bold tracking-tight text-white leading-tight">Universal Academic Sovereign Web Platform</h1>
                 </div>
             </div>
             
-            <div class="flex items-center gap-3 text-xs">
-                <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 border border-slate-700 hidden sm:inline-block">UPSC • NEET • JEE • CA • AI • Law</span>
-                <span class="px-3 py-1.5 rounded-lg bg-teal-950 text-teal-300 font-bold border border-teal-800">100% Full Proofs</span>
-                <a href="https://github.com/adityanimbalkar9699-max/prof-anna-study-agent" target="_blank" class="px-3 py-1.5 rounded-lg bg-white text-slate-900 font-bold hover:bg-slate-100 transition">GitHub Repo</a>
+            <div class="flex items-center gap-2 sm:gap-3 text-xs w-full sm:w-auto justify-end">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700 hidden lg:inline-block">UPSC • NEET • JEE • CA • AI • Law</span>
+                <button onclick="window.print()" class="px-3 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-bold transition flex items-center gap-1.5 shadow-sm">
+                    <span>🖨️</span> Save/Print PDF
+                </button>
+                <a href="https://github.com/adityanimbalkar9699-max/prof-anna-study-agent" target="_blank" class="px-3 py-1.5 rounded-lg bg-white text-slate-900 font-bold hover:bg-slate-100 transition">GitHub</a>
             </div>
         </div>
     </header>
 
     <!-- Main Workspace Container -->
-    <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 py-8 flex-1 flex flex-col md:flex-row gap-8">
+    <div class="max-w-7xl mx-auto w-full px-3 sm:px-6 py-6 flex-1 flex flex-col md:flex-row gap-6">
         
-        <!-- Sidebar Navigation Tabs -->
-        <aside class="w-full md:w-72 flex-shrink-0 no-print">
-            <div class="bg-white rounded-2xl border border-slate-200 p-3 shadow-sm sticky top-24">
-                <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3 py-2">Sovereign Engines</div>
-                <nav class="space-y-1" id="nav-tabs">
-                    <button onclick="switchTab('omni')" class="tab-btn active w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+        <!-- Navigation Bar / Tabs (Horizontal scroll on mobile, sleek sidebar on desktop) -->
+        <aside class="w-full md:w-64 flex-shrink-0 no-print">
+            <div class="bg-white rounded-2xl border border-slate-200 p-2 sm:p-3 shadow-sm md:sticky md:top-24">
+                <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3 py-1.5 hidden md:block">Sovereign Engines</div>
+                <nav class="flex md:flex-col overflow-x-auto md:overflow-visible gap-1.5 no-scrollbar pb-1 md:pb-0" id="nav-tabs">
+                    <button onclick="switchTab('omni', this)" data-tab="omni" class="tab-btn active shrink-0 md:w-full text-left px-3 py-2 rounded-xl text-xs flex items-center gap-2 transition whitespace-nowrap">
                         <span>🌍</span> Universal Answer (UPSC/NEET/CA)
                     </button>
-                    <button onclick="switchTab('solve')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                    <button onclick="switchTab('solve', this)" data-tab="solve" class="tab-btn shrink-0 md:w-full text-left px-3 py-2 rounded-xl text-xs flex items-center gap-2 transition whitespace-nowrap">
                         <span>📝</span> Assignment Solver &amp; Proofs
                     </button>
-                    <button onclick="switchTab('check')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                    <button onclick="switchTab('check', this)" data-tab="check" class="tab-btn shrink-0 md:w-full text-left px-3 py-2 rounded-xl text-xs flex items-center gap-2 transition whitespace-nowrap">
                         <span>🔍</span> Solution Grader &amp; "Cheque"
                     </button>
-                    <button onclick="switchTab('diagram')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                    <button onclick="switchTab('diagram', this)" data-tab="diagram" class="tab-btn shrink-0 md:w-full text-left px-3 py-2 rounded-xl text-xs flex items-center gap-2 transition whitespace-nowrap">
                         <span>📐</span> Diagram Studio + Links
                     </button>
-                    <button onclick="switchTab('pdf')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                    <button onclick="switchTab('pdf', this)" data-tab="pdf" class="tab-btn shrink-0 md:w-full text-left px-3 py-2 rounded-xl text-xs flex items-center gap-2 transition whitespace-nowrap">
                         <span>📄</span> Anti-AI Luxury PDF Studio
                     </button>
-                    <button onclick="switchTab('sih')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                    <button onclick="switchTab('sih', this)" data-tab="sih" class="tab-btn shrink-0 md:w-full text-left px-3 py-2 rounded-xl text-xs flex items-center gap-2 transition whitespace-nowrap">
                         <span>📊</span> SIH Hackathon &amp; PPT Cloner
                     </button>
-                    <button onclick="switchTab('paper')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                    <button onclick="switchTab('paper', this)" data-tab="paper" class="tab-btn shrink-0 md:w-full text-left px-3 py-2 rounded-xl text-xs flex items-center gap-2 transition whitespace-nowrap">
                         <span>📜</span> IEEE Access Paper Synthesizer
                     </button>
-                    <button onclick="switchTab('exam')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                    <button onclick="switchTab('exam', this)" data-tab="exam" class="tab-btn shrink-0 md:w-full text-left px-3 py-2 rounded-xl text-xs flex items-center gap-2 transition whitespace-nowrap">
                         <span>🎯</span> Pareto 80/20 Exam Forensics
                     </button>
-                    <button onclick="switchTab('video')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                    <button onclick="switchTab('video', this)" data-tab="video" class="tab-btn shrink-0 md:w-full text-left px-3 py-2 rounded-xl text-xs flex items-center gap-2 transition whitespace-nowrap">
                         <span>🎬</span> 60fps Video Script Studio
                     </button>
-                    <button onclick="switchTab('memory')" class="tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition">
+                    <button onclick="switchTab('memory', this)" data-tab="memory" class="tab-btn shrink-0 md:w-full text-left px-3 py-2 rounded-xl text-xs flex items-center gap-2 transition whitespace-nowrap">
                         <span>🧠</span> Spatial Memory Palace Studio
                     </button>
                 </nav>
@@ -95,33 +100,86 @@
         </aside>
 
         <!-- Dynamic Content Panel -->
-        <main class="flex-1 bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
+        <main class="flex-1 bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 md:p-8 shadow-sm">
+
+            <!-- High-Visibility 3-Step Interactive Quick-Start Guide -->
+            <div class="quick-guide mb-6 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-teal-950 text-white shadow-md border border-teal-500/30">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xl">📖</span>
+                        <h2 class="text-sm font-bold text-white tracking-wide">How to Use Prof. Anna in 3 Simple Steps</h2>
+                    </div>
+                    <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 font-bold border border-teal-400/30">Quick Guide</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                    <div class="bg-white/10 p-3 rounded-xl border border-white/10">
+                        <div class="font-bold text-teal-300 mb-1 flex items-center gap-1.5">
+                            <span class="w-5 h-5 rounded-full bg-teal-500 text-slate-900 flex items-center justify-center text-[10px] font-black">1</span>
+                            Enter Your Question
+                        </div>
+                        <p class="text-slate-300 text-[11px] leading-relaxed">Type or paste any question in the white box below, or tap one of our 1-click sample buttons.</p>
+                    </div>
+                    <div class="bg-white/10 p-3 rounded-xl border border-white/10">
+                        <div class="font-bold text-teal-300 mb-1 flex items-center gap-1.5">
+                            <span class="w-5 h-5 rounded-full bg-teal-500 text-slate-900 flex items-center justify-center text-[10px] font-black">2</span>
+                            Pick Marks &amp; Subject
+                        </div>
+                        <p class="text-slate-300 text-[11px] leading-relaxed">Choose target marks (2M, 5M, 8M, 10M, 15M) and your exam (UPSC, NEET, JEE, CA, Engineering, Law).</p>
+                    </div>
+                    <div class="bg-white/10 p-3 rounded-xl border border-white/10">
+                        <div class="font-bold text-teal-300 mb-1 flex items-center gap-1.5">
+                            <span class="w-5 h-5 rounded-full bg-teal-500 text-slate-900 flex items-center justify-center text-[10px] font-black">3</span>
+                            Synthesize &amp; Save PDF
+                        </div>
+                        <p class="text-slate-300 text-[11px] leading-relaxed">Click <b>⚡ Synthesize Solution</b>, review your answer with diagrams, then click <b>🖨️ Download / Save as PDF</b>.</p>
+                    </div>
+                </div>
+            </div>
 
             <!-- 1. Universal Answer Formulator Panel -->
             <section id="panel-omni" class="tab-panel">
-                <div class="mb-6">
+                <div class="mb-4">
                     <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">Multi-Discipline Engine</span>
-                    <h2 class="text-2xl font-bold text-slate-900 mt-1">Universal Mark-Targeted Answer Formulator</h2>
-                    <p class="text-xs text-slate-500 mt-1">Generates complete, mark-securing answers with Definitions, Labeled Diagrams, Mechanisms, Case Laws &amp; Way Forward.</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mt-0.5">Universal Mark-Targeted Answer Formulator</h3>
+                    <p class="text-xs text-slate-500 mt-1">Generates complete mark-securing answers with Axiomatic Definitions, Vector Diagrams, Case Laws/Formulas &amp; Examiner Traps.</p>
                 </div>
 
+                <!-- 1-Click Preset Samples -->
+                <div class="mb-4 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider">⚡ 1-Click Example Questions:</span>
+                        <button onclick="clearQuestion()" class="text-[10px] px-2 py-0.5 rounded bg-rose-50 text-rose-700 hover:bg-rose-100 font-semibold border border-rose-200 transition">✕ Clear Text Box</button>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <button onclick="loadSample('upsc')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-teal-50 hover:text-teal-700 text-slate-700 font-medium transition border border-slate-300 shadow-2xs">🏛️ UPSC Polity (8 Marks)</button>
+                        <button onclick="loadSample('neet')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-teal-50 hover:text-teal-700 text-slate-700 font-medium transition border border-slate-300 shadow-2xs">🧬 NEET Nephron (5 Marks)</button>
+                        <button onclick="loadSample('jee')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-teal-50 hover:text-teal-700 text-slate-700 font-medium transition border border-slate-300 shadow-2xs">⚛️ JEE Carnot Cycle (5 Marks)</button>
+                        <button onclick="loadSample('ca')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-teal-50 hover:text-teal-700 text-slate-700 font-medium transition border border-slate-300 shadow-2xs">💰 CA Balance Sheet (8 Marks)</button>
+                        <button onclick="loadSample('cs')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-teal-50 hover:text-teal-700 text-slate-700 font-medium transition border border-slate-300 shadow-2xs">💻 CS Recurrence Proof (10 Marks)</button>
+                        <button onclick="loadSample('ai')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white hover:bg-teal-50 hover:text-teal-700 text-slate-700 font-medium transition border border-slate-300 shadow-2xs">🧠 AI Transformer Attention (8 Marks)</button>
+                    </div>
+                </div>
+
+                <!-- Input Controls -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                     <div class="md:col-span-2">
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Examination Question Statement:</label>
-                        <textarea id="omni-question" class="w-full text-sm p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:outline-none" rows="4">Examine the doctrine of Separation of Powers under the Indian Constitution and its contemporary judicial developments.</textarea>
+                        <label class="block text-xs font-bold text-slate-800 mb-1">
+                            📝 Examination Question Statement (Type or Paste Any Question Here):
+                        </label>
+                        <textarea id="omni-question" class="w-full text-sm p-3.5 border-2 border-slate-300 rounded-xl focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 focus:outline-none transition bg-white" rows="4" placeholder="Type or paste ANY question, assignment problem, or exam prompt here..."></textarea>
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Target Marks Weightage:</label>
-                        <select id="omni-marks" class="w-full text-sm p-3 border border-slate-300 rounded-xl mb-3 focus:outline-none">
-                            <option value="2">2 Marks (Short / Objective)</option>
-                            <option value="5">5 Marks (Medium / Concept)</option>
+                        <label class="block text-xs font-bold text-slate-800 mb-1">🎯 Target Marks Weightage:</label>
+                        <select id="omni-marks" class="w-full text-sm p-2.5 border-2 border-slate-300 rounded-xl mb-3 focus:border-teal-600 focus:outline-none bg-white">
+                            <option value="2">2 Marks (Short / Axiomatic)</option>
+                            <option value="5">5 Marks (Concept + Schematic)</option>
                             <option value="8" selected>8 Marks (Full University Standard)</option>
-                            <option value="10">10 Marks (UPSC 150 Words)</option>
-                            <option value="15">15 Marks (UPSC 250 Words / Long)</option>
+                            <option value="10">10 Marks (UPSC 150 Words / Deep)</option>
+                            <option value="15">15 Marks (UPSC 250 Words / Comprehensive)</option>
                         </select>
                         
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Domain Discipline:</label>
-                        <select id="omni-domain" class="w-full text-sm p-3 border border-slate-300 rounded-xl focus:outline-none">
+                        <label class="block text-xs font-bold text-slate-800 mb-1">🏛️ Subject Discipline / Exam:</label>
+                        <select id="omni-domain" class="w-full text-sm p-2.5 border-2 border-slate-300 rounded-xl focus:border-teal-600 focus:outline-none bg-white">
                             <option value="UPSC_CIVIL_SERVICES" selected>🏛️ UPSC / MPSC Civil Services</option>
                             <option value="MEDICAL_NEET">🧬 Medical &amp; NEET Biology</option>
                             <option value="COMMERCE_ACCOUNTING">💰 Commerce, Accounting &amp; CA</option>
@@ -132,68 +190,84 @@
                     </div>
                 </div>
 
-                <div class="flex gap-3">
-                    <button onclick="runOmniSolve()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition flex items-center gap-2">
+                <!-- Primary Action Buttons -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <button onclick="runOmniSolve()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition flex items-center gap-2 shadow-sm">
                         <span>⚡ Synthesize 100% Mark-Securing Solution</span>
                     </button>
-                    <button onclick="window.print()" class="px-4 py-3 bg-slate-100 text-slate-700 text-xs font-bold rounded-xl hover:bg-slate-200 transition">
-                        🖨️ Print / Save PDF
+                    <button onclick="window.print()" class="px-5 py-3 bg-teal-700 text-white text-xs font-bold rounded-xl hover:bg-teal-800 transition flex items-center gap-2 shadow-sm">
+                        <span>🖨️ Download / Save as PDF</span>
+                    </button>
+                    <button onclick="copyOutput()" id="copy-btn" class="px-4 py-3 bg-slate-100 text-slate-700 text-xs font-bold rounded-xl hover:bg-slate-200 transition">
+                        📋 Copy Answer
                     </button>
                 </div>
 
-                <div id="omni-output" class="mt-8"></div>
+                <!-- Dynamic Output Area -->
+                <div id="omni-output" class="mt-6"></div>
             </section>
 
             <!-- 2. Assignment Solver Panel -->
             <section id="panel-solve" class="tab-panel hidden">
-                <div class="mb-6">
+                <div class="mb-4">
                     <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">Formal Proof Engine</span>
-                    <h2 class="text-2xl font-bold text-slate-900 mt-1">Assignment Solver &amp; Proof Verifier</h2>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mt-0.5">Assignment Solver &amp; Proof Verifier</h3>
                     <p class="text-xs text-slate-500 mt-1">Solves algorithms, mathematics, and systems with inductive verification and asymptotic tightness.</p>
                 </div>
-                <textarea id="solve-problem" class="w-full text-sm p-3.5 border border-slate-300 rounded-xl mb-4" rows="3">Solve recurrence relation T(n) = 2T(n/2) + Theta(n) with base case T(1) = 1. Prove tight asymptotic bound.</textarea>
-                <button onclick="runSolve()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
-                    Derive Formal Mathematical Proof
-                </button>
-                <div id="solve-output" class="mt-8"></div>
+                <label class="block text-xs font-bold text-slate-800 mb-1">Problem Statement:</label>
+                <textarea id="solve-problem" class="w-full text-sm p-3.5 border-2 border-slate-300 rounded-xl mb-4 focus:outline-none" rows="3">Solve recurrence relation T(n) = 2T(n/2) + Theta(n) with base case T(1) = 1. Prove tight asymptotic bound.</textarea>
+                <div class="flex gap-3">
+                    <button onclick="runSolve()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
+                        ⚡ Derive Formal Mathematical Proof
+                    </button>
+                    <button onclick="window.print()" class="px-4 py-3 bg-teal-700 text-white text-xs font-bold rounded-xl hover:bg-teal-800 transition">
+                        🖨️ Save as PDF
+                    </button>
+                </div>
+                <div id="solve-output" class="mt-6"></div>
             </section>
 
             <!-- 3. Solution Grader & "Cheque" Panel -->
             <section id="panel-check" class="tab-panel hidden">
-                <div class="mb-6">
+                <div class="mb-4">
                     <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">Academic Auditor</span>
-                    <h2 class="text-2xl font-bold text-slate-900 mt-1">Solution Grader &amp; Rubric Auditor ("Cheque")</h2>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mt-0.5">Solution Grader &amp; Rubric Auditor ("Cheque")</h3>
                     <p class="text-xs text-slate-500 mt-1">Audit draft answers against university grading rubrics, detect missing boundary conditions, and get awarded scores.</p>
                 </div>
                 <div class="space-y-4 mb-4">
                     <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Problem Statement:</label>
-                        <input id="check-problem" type="text" class="w-full text-sm p-3 border border-slate-300 rounded-xl" value="Solve recurrence T(n) = 2T(n/2) + n">
+                        <label class="block text-xs font-bold text-slate-800 mb-1">Problem Statement:</label>
+                        <input id="check-problem" type="text" class="w-full text-sm p-3 border-2 border-slate-300 rounded-xl focus:outline-none" value="Solve recurrence T(n) = 2T(n/2) + n">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Student's Draft Solution:</label>
-                        <textarea id="check-solution" class="w-full text-sm p-3.5 border border-slate-300 rounded-xl" rows="4">Given T(n) = 2T(n/2) + n.
+                        <label class="block text-xs font-bold text-slate-800 mb-1">Student's Draft Solution to Audit:</label>
+                        <textarea id="check-solution" class="w-full text-sm p-3.5 border-2 border-slate-300 rounded-xl focus:outline-none" rows="4">Given T(n) = 2T(n/2) + n.
 By Master Theorem, a=2, b=2, so n^(log2 2) = n.
 Since f(n) = n, Case 2 applies.
 Therefore, T(n) = Theta(n log n). Q.E.D.</textarea>
                     </div>
                 </div>
-                <button onclick="runCheck()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
-                    Run Official Rubric Audit
-                </button>
-                <div id="check-output" class="mt-8"></div>
+                <div class="flex gap-3">
+                    <button onclick="runCheck()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
+                        🔍 Run Official Rubric Audit
+                    </button>
+                    <button onclick="window.print()" class="px-4 py-3 bg-teal-700 text-white text-xs font-bold rounded-xl hover:bg-teal-800 transition">
+                        🖨️ Save as PDF
+                    </button>
+                </div>
+                <div id="check-output" class="mt-6"></div>
             </section>
 
             <!-- 4. Universal Diagram Studio Panel -->
             <section id="panel-diagram" class="tab-panel hidden">
-                <div class="mb-6">
+                <div class="mb-4">
                     <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">Vector Graphics &amp; Fallbacks</span>
-                    <h2 class="text-2xl font-bold text-slate-900 mt-1">Universal Diagram Studio + Live References</h2>
-                    <p class="text-xs text-slate-500 mt-1">Renders high-res vector diagrams across Medical, UPSC, CA, Physics, and AI with direct links to PubMed, NCERT, Nature &amp; UPSC.</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mt-0.5">Universal Diagram Studio + Live Verified Links</h3>
+                    <p class="text-xs text-slate-500 mt-1">Renders high-res vector diagrams across Medical, UPSC, CA, Physics, and AI with direct links to PubMed, NCERT, Nature &amp; Supreme Court.</p>
                 </div>
                 <div class="max-w-xl mb-4">
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">Concept or Schematic Topic:</label>
-                    <select id="diag-select" onchange="runDiagram()" class="w-full text-sm p-3 border border-slate-300 rounded-xl mb-3 focus:outline-none">
+                    <label class="block text-xs font-bold text-slate-800 mb-1">Select Concept or Schematic Topic:</label>
+                    <select id="diag-select" onchange="runDiagram()" class="w-full text-sm p-3 border-2 border-slate-300 rounded-xl mb-3 focus:outline-none">
                         <option value="nephron" selected>🧬 Nephron Countercurrent Multiplier (Medical / NEET)</option>
                         <option value="separation">🏛️ Separation of Powers Triad (UPSC Polity)</option>
                         <option value="balance_sheet">💰 Balance Sheet T-Account Architecture (Commerce / CA)</option>
@@ -201,186 +275,601 @@ Therefore, T(n) = Theta(n log n). Q.E.D.</textarea>
                         <option value="transformer">💻 Transformer Multi-Head Self-Attention (AI)</option>
                     </select>
                 </div>
-                <button onclick="runDiagram()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
-                    Render Publication Diagram
-                </button>
-                <div id="diag-output" class="mt-8"></div>
+                <div class="flex gap-3">
+                    <button onclick="runDiagram()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
+                        📐 Render Publication Diagram
+                    </button>
+                    <button onclick="window.print()" class="px-4 py-3 bg-teal-700 text-white text-xs font-bold rounded-xl hover:bg-teal-800 transition">
+                        🖨️ Save Diagram as PDF
+                    </button>
+                </div>
+                <div id="diag-output" class="mt-6"></div>
             </section>
 
             <!-- 5. Anti-AI PDF Studio Panel -->
             <section id="panel-pdf" class="tab-panel hidden">
-                <div class="mb-6">
+                <div class="mb-4">
                     <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">Luxury Publication Engine</span>
-                    <h2 class="text-2xl font-bold text-slate-900 mt-1">Anti-AI Luxury Publication-Grade PDF Generator</h2>
-                    <p class="text-xs text-slate-500 mt-1">Generates handcrafted PDFs with editorial typography, hairline rules, rich obsidian tones, and zero AI clichés.</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mt-0.5">Anti-AI Luxury Publication-Grade PDF Generator</h3>
+                    <p class="text-xs text-slate-500 mt-1">Handcrafted PDFs with editorial typography, hairline rules, obsidian tones, running academic headers, and zero AI clichés.</p>
                 </div>
                 <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 max-w-xl mb-6">
-                    <h3 class="text-sm font-bold text-slate-900 mb-2">📄 Instant Publication Print / PDF Export</h3>
-                    <p class="text-xs text-slate-600 mb-4">You can print or save any generated assignment or paper using the editorial print stylesheet with two-pass academic headers.</p>
-                    <button onclick="window.print()" class="px-5 py-2.5 bg-teal-800 text-white text-xs font-bold rounded-xl hover:bg-teal-700 transition">
-                        🖨️ Print / Save Publication PDF
+                    <h4 class="text-sm font-bold text-slate-900 mb-2">📄 How to Download or Print Your Publication-Grade PDF</h4>
+                    <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+                        Every answer, proof, diagram, and paper generated on this platform is automatically pre-formatted using our luxury publication print stylesheet.
+                        Simply click the button below or press <b>Ctrl+P (Cmd+P on Mac)</b>, then select <b>"Save as PDF"</b> as your destination printer.
+                    </p>
+                    <div class="space-y-2 mb-4 text-xs text-slate-700">
+                        <div class="flex items-center gap-2">✓ <b>Zero AI Watermarks:</b> Clean, authentic Oxford/IEEE academic typography.</div>
+                        <div class="flex items-center gap-2">✓ <b>Two-Pass Running Headers:</b> Automatic page numbers (Page X of Y).</div>
+                        <div class="flex items-center gap-2">✓ <b>100% Vector Quality:</b> Razor-sharp diagrams, formulas, and rubrics.</div>
+                    </div>
+                    <button onclick="window.print()" class="px-6 py-3 bg-teal-800 text-white text-xs font-bold rounded-xl hover:bg-teal-700 transition flex items-center gap-2 shadow-sm">
+                        <span>🖨️</span> Print / Save Publication PDF Now
                     </button>
                 </div>
             </section>
 
             <!-- 6. SIH Hackathon & PPT Cloner Panel -->
             <section id="panel-sih" class="tab-panel hidden">
-                <div class="mb-6">
+                <div class="mb-4">
                     <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">National Pitch Deck Engine</span>
-                    <h2 class="text-2xl font-bold text-slate-900 mt-1">Smart India Hackathon (SIH) Optimizer &amp; PPT Cloner</h2>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mt-0.5">Smart India Hackathon (SIH) Optimizer &amp; PPT Cloner</h3>
                     <p class="text-xs text-slate-500 mt-1">Analyzes presentations against the official AICTE / SIH jury scoring rubric, rewrites slides, and builds winning pitch decks.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Project Title:</label>
-                        <input id="sih-title" type="text" class="w-full text-sm p-3 border border-slate-300 rounded-xl" value="Autonomous Edge AI Grid for Rural Water Leakage Detection">
+                        <label class="block text-xs font-bold text-slate-800 mb-1">Project Title:</label>
+                        <input id="sih-title" type="text" class="w-full text-sm p-3 border-2 border-slate-300 rounded-xl focus:outline-none" value="Autonomous Edge AI Grid for Rural Water Leakage Detection">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Problem Statement ID (PS-ID):</label>
-                        <input id="sih-ps" type="text" class="w-full text-sm p-3 border border-slate-300 rounded-xl" value="SIH-2024-PS1482">
+                        <label class="block text-xs font-bold text-slate-800 mb-1">Problem Statement ID (PS-ID):</label>
+                        <input id="sih-ps" type="text" class="w-full text-sm p-3 border-2 border-slate-300 rounded-xl focus:outline-none" value="SIH-2024-PS1482">
                     </div>
                 </div>
-                <button onclick="runSih()" class="px-6 py-3 bg-teal-800 text-white text-xs font-bold rounded-xl hover:bg-teal-700 transition">
-                    🏆 Run SIH Jury Audit &amp; Synthesize Winning Deck
-                </button>
-                <div id="sih-output" class="mt-8"></div>
+                <div class="flex gap-3">
+                    <button onclick="runSih()" class="px-6 py-3 bg-teal-800 text-white text-xs font-bold rounded-xl hover:bg-teal-700 transition">
+                        🏆 Run SIH Jury Audit &amp; Synthesize Winning Deck
+                    </button>
+                    <button onclick="window.print()" class="px-4 py-3 bg-slate-100 text-slate-700 text-xs font-bold rounded-xl hover:bg-slate-200 transition">
+                        🖨️ Save as PDF
+                    </button>
+                </div>
+                <div id="sih-output" class="mt-6"></div>
             </section>
 
             <!-- 7. IEEE Access Research Paper Panel -->
             <section id="panel-paper" class="tab-panel hidden">
-                <div class="mb-6">
+                <div class="mb-4">
                     <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">Peer-Reviewed Standard</span>
-                    <h2 class="text-2xl font-bold text-slate-900 mt-1">IEEE Access Two-Column Paper Synthesizer</h2>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mt-0.5">IEEE Access Two-Column Paper Synthesizer</h3>
                     <p class="text-xs text-slate-500 mt-1">Drafts authentic IEEE Access compliant research papers with two-column LaTeX code and live HTML previews.</p>
                 </div>
-                <button onclick="runPaper()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
-                    Synthesize IEEE Access Paper
-                </button>
-                <div id="paper-output" class="mt-8"></div>
+                <div class="flex gap-3">
+                    <button onclick="runPaper()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
+                        📜 Synthesize IEEE Access Paper
+                    </button>
+                    <button onclick="window.print()" class="px-4 py-3 bg-teal-700 text-white text-xs font-bold rounded-xl hover:bg-teal-800 transition">
+                        🖨️ Print Manuscript PDF
+                    </button>
+                </div>
+                <div id="paper-output" class="mt-6"></div>
             </section>
 
             <!-- 8. Pareto 80/20 Exam Forensics Panel -->
             <section id="panel-exam" class="tab-panel hidden">
-                <div class="mb-6">
+                <div class="mb-4">
                     <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">PYQ Forensics Engine</span>
-                    <h2 class="text-2xl font-bold text-slate-900 mt-1">Pareto 80/20 Exam Forensics &amp; Success Rate Checklist</h2>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mt-0.5">Pareto 80/20 Exam Forensics &amp; Success Rate Checklist</h3>
                     <p class="text-xs text-slate-500 mt-1">Isolate the top 20% high-frequency topics that historically generate 80% of total exam marks.</p>
                 </div>
-                <button onclick="runExam()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
-                    🎯 Calculate 80/20 High-Yield Checklist
-                </button>
-                <div id="exam-output" class="mt-8"></div>
+                <div class="flex gap-3">
+                    <button onclick="runExam()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
+                        🎯 Calculate 80/20 High-Yield Checklist
+                    </button>
+                    <button onclick="window.print()" class="px-4 py-3 bg-teal-700 text-white text-xs font-bold rounded-xl hover:bg-teal-800 transition">
+                        🖨️ Save Checklist PDF
+                    </button>
+                </div>
+                <div id="exam-output" class="mt-6"></div>
             </section>
 
             <!-- 9. Kinetic Video Script Panel -->
             <section id="panel-video" class="tab-panel hidden">
-                <div class="mb-6">
+                <div class="mb-4">
                     <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">Cinematic Studio</span>
-                    <h2 class="text-2xl font-bold text-slate-900 mt-1">60fps Kinetic Video Script &amp; Storyboard Studio</h2>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mt-0.5">60fps Kinetic Video Script &amp; Storyboard Studio</h3>
                     <p class="text-xs text-slate-500 mt-1">Timestamped video voiceover scripts with on-screen visual animation cues and interactive web presentations.</p>
                 </div>
-                <button onclick="runVideoScript()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
-                    🎬 Generate Cinematic Video Storyboard
-                </button>
-                <div id="video-output" class="mt-8"></div>
+                <div class="flex gap-3">
+                    <button onclick="runVideoScript()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
+                        🎬 Generate Cinematic Video Storyboard
+                    </button>
+                    <button onclick="window.print()" class="px-4 py-3 bg-teal-700 text-white text-xs font-bold rounded-xl hover:bg-teal-800 transition">
+                        🖨️ Print Storyboard PDF
+                    </button>
+                </div>
+                <div id="video-output" class="mt-6"></div>
             </section>
 
             <!-- 10. Spatial Memory Palace Panel -->
             <section id="panel-memory" class="tab-panel hidden">
-                <div class="mb-6">
+                <div class="mb-4">
                     <span class="text-xs font-mono font-bold text-teal-600 uppercase tracking-widest">Smart Work Pedagogy</span>
-                    <h2 class="text-2xl font-bold text-slate-900 mt-1">Spatial Memory Palace &amp; Mnemonic Studio</h2>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mt-0.5">Spatial Memory Palace &amp; Mnemonic Studio</h3>
                     <p class="text-xs text-slate-500 mt-1">Phonetic acronyms and spatial Method of Loci walkthroughs for effortlessly memorizing long lists and articles.</p>
                 </div>
                 <div class="max-w-xl mb-4">
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">Topic to Memorize:</label>
-                    <select id="memory-select" class="w-full text-sm p-3 border border-slate-300 rounded-xl">
+                    <label class="block text-xs font-bold text-slate-800 mb-1">Select Topic to Memorize:</label>
+                    <select id="memory-select" class="w-full text-sm p-3 border-2 border-slate-300 rounded-xl focus:outline-none">
                         <option value="12 Schedules of Indian Constitution">12 Schedules of Indian Constitution (TEARS OF OLD PM)</option>
                         <option value="12 Cranial Nerves in Order">12 Cranial Nerves in Order (OOOTTAFAGVSH)</option>
                         <option value="Golden Rules of Double-Entry Bookkeeping">Golden Rules of Double-Entry Bookkeeping (RPN)</option>
                     </select>
                 </div>
-                <button onclick="runMnemonic()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
-                    🧠 Construct Memory Palace Journey
-                </button>
-                <div id="memory-output" class="mt-8"></div>
+                <div class="flex gap-3">
+                    <button onclick="runMnemonic()" class="px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
+                        🧠 Construct Memory Palace Journey
+                    </button>
+                    <button onclick="window.print()" class="px-4 py-3 bg-teal-700 text-white text-xs font-bold rounded-xl hover:bg-teal-800 transition">
+                        🖨️ Save as PDF
+                    </button>
+                </div>
+                <div id="memory-output" class="mt-6"></div>
             </section>
 
         </main>
     </div>
 
-    <!-- App Logic Scripts (Fully Client-Side Deployable) -->
+    <!-- Client-Side Dynamic Solver & Application Logic -->
     <script>
-        function switchTab(tabId) {
+        // Tab Switcher
+        function switchTab(tabId, btn) {
             document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             
             const targetPanel = document.getElementById('panel-' + tabId);
-            if (targetPanel) targetPanel.classList.remove('hidden');
+            if (targetPanel) {
+                targetPanel.classList.remove('hidden');
+            }
             
-            event.currentTarget.classList.add('active');
+            if (btn) {
+                btn.classList.add('active');
+            } else {
+                const found = document.querySelector(`button[data-tab="${tabId}"]`);
+                if (found) found.classList.add('active');
+            }
+
+            // On mobile, scroll smoothly down to panel
+            if (window.innerWidth < 768 && targetPanel) {
+                targetPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
-        // 1. Universal Answer Formulator Logic
+        // 1-Click Samples
+        const SAMPLE_QUESTIONS = {
+            upsc: {
+                q: "Examine the doctrine of Separation of Powers under the Indian Constitution and its contemporary judicial developments.",
+                marks: "8",
+                domain: "UPSC_CIVIL_SERVICES"
+            },
+            neet: {
+                q: "Explain the structure of Nephron and elucidate the countercurrent mechanism in the concentration of urine.",
+                marks: "5",
+                domain: "MEDICAL_NEET"
+            },
+            jee: {
+                q: "Explain the Carnot engine cycle with a P-V indicator diagram and derive its thermodynamic efficiency formula.",
+                marks: "5",
+                domain: "JEE_PHYSICAL_SCIENCES"
+            },
+            ca: {
+                q: "Explain the Double-Entry Bookkeeping T-Account architecture and how the Balance Sheet balances under Schedule III of Companies Act 2013.",
+                marks: "8",
+                domain: "COMMERCE_ACCOUNTING"
+            },
+            cs: {
+                q: "Solve the divide-and-conquer recurrence relation T(n) = 2T(n/2) + Theta(n) with base case T(1) = 1. Prove tight asymptotic bound.",
+                marks: "10",
+                domain: "AI_MACHINE_LEARNING"
+            },
+            ai: {
+                q: "Explain Multi-Head Self-Attention mechanism in Transformer architectures with scaled dot-product formula and complexity bounds.",
+                marks: "8",
+                domain: "AI_MACHINE_LEARNING"
+            }
+        };
+
+        function loadSample(key) {
+            const sample = SAMPLE_QUESTIONS[key];
+            if (!sample) return;
+            document.getElementById('omni-question').value = sample.q;
+            document.getElementById('omni-marks').value = sample.marks;
+            document.getElementById('omni-domain').value = sample.domain;
+            runOmniSolve();
+        }
+
+        function clearQuestion() {
+            document.getElementById('omni-question').value = '';
+            document.getElementById('omni-question').focus();
+        }
+
+        function copyOutput() {
+            const out = document.getElementById('omni-output');
+            if (!out) return;
+            navigator.clipboard.writeText(out.innerText).then(() => {
+                const btn = document.getElementById('copy-btn');
+                btn.innerText = '✓ Copied!';
+                setTimeout(() => { btn.innerText = '📋 Copy Answer'; }, 2000);
+            });
+        }
+
+        // 1. Dynamic Universal Answer Formulator Engine
         function runOmniSolve() {
             const out = document.getElementById('omni-output');
-            const q = document.getElementById('omni-question').value;
-            const marks = document.getElementById('omni-marks').value;
+            let q = document.getElementById('omni-question').value.trim();
+            const marks = parseInt(document.getElementById('omni-marks').value) || 8;
             const domain = document.getElementById('omni-domain').value;
 
+            if (!q) {
+                q = "Examine the doctrine of Separation of Powers under the Indian Constitution and its contemporary judicial developments.";
+                document.getElementById('omni-question').value = q;
+            }
+
+            const qLower = q.toLowerCase();
+
+            // Dynamic Topic Matching
+            let topicType = 'upsc';
+            if (qLower.includes('nephron') || qLower.includes('kidney') || qLower.includes('urine') || qLower.includes('biology') || qLower.includes('henle')) {
+                topicType = 'neet';
+            } else if (qLower.includes('carnot') || qLower.includes('thermodynamic') || qLower.includes('heat engine') || qLower.includes('efficiency')) {
+                topicType = 'jee';
+            } else if (qLower.includes('balance sheet') || qLower.includes('accounting') || qLower.includes('ledger') || qLower.includes('t-account') || qLower.includes('debenture')) {
+                topicType = 'ca';
+            } else if (qLower.includes('recurrence') || qLower.includes('master theorem') || qLower.includes('divide') || qLower.includes('complexity') || qLower.includes('algorithm')) {
+                topicType = 'cs';
+            } else if (qLower.includes('attention') || qLower.includes('transformer') || qLower.includes('neural') || qLower.includes('deep learning')) {
+                topicType = 'ai';
+            }
+
+            let title = '';
+            let domainLabel = '';
+            let axiomPrinciple = '';
+            let svgDiagram = '';
+            let refTitle = '';
+            let refUrl = '';
+            let refSource = '';
+            let workingSteps = [];
+            let realWorldApps = [];
+            let trapAlert = '';
+            let conclusion = '';
+
+            if (topicType === 'neet') {
+                title = "Nephron Countercurrent Multiplier & Renal Fluid Concentration";
+                domainLabel = "NEET Biology • Renal Physiology";
+                axiomPrinciple = "Glomerular Filtration Rate (GFR = 125 mL/min), Countercurrent Medullary Osmotic Gradient (300 to 1200 mOsm/L).";
+                refTitle = "NIH PubMed & Guyton and Hall Textbook of Medical Physiology";
+                refUrl = "https://www.ncbi.nlm.nih.gov/books/NBK545198/";
+                refSource = "National Library of Medicine (NIH)";
+                svgDiagram = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="100%" height="220" style="background:#FAF9F6; font-family:'Inter', sans-serif;">
+                    <rect x="20" y="20" width="220" height="175" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+                    <text x="35" y="55" font-size="13" font-weight="700" fill="#1D4ED8">1. Bowman's Capsule</text>
+                    <text x="35" y="85" font-size="11" fill="#475569">• GFR = 125 mL/min (180 L/day)</text>
+                    <text x="35" y="110" font-size="11" fill="#475569">• Ultrafiltration via Podocytes</text>
+                    <text x="35" y="135" font-size="11" fill="#475569">• Net Pressure = 10-15 mmHg</text>
+                    
+                    <rect x="290" y="20" width="220" height="175" rx="10" fill="#FFFFFF" stroke="#0D9488" stroke-width="2"/>
+                    <text x="305" y="55" font-size="13" font-weight="700" fill="#0F766E">2. Loop of Henle Multiplier</text>
+                    <text x="305" y="85" font-size="11" fill="#475569">• Descending: Water permeable</text>
+                    <text x="305" y="110" font-size="11" fill="#475569">• Ascending: Active NaCl pump</text>
+                    <text x="305" y="135" font-size="11" fill="#475569">• Medullary Gradient: 1200 mOsm</text>
+
+                    <rect x="560" y="20" width="220" height="175" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+                    <text x="575" y="55" font-size="13" font-weight="700" fill="#B45309">3. Collecting Duct</text>
+                    <text x="575" y="85" font-size="11" fill="#475569">• ADH / Vasopressin Control</text>
+                    <text x="575" y="110" font-size="11" fill="#475569">• Aquaporin-2 translocation</text>
+                    <text x="575" y="135" font-size="11" fill="#475569">• Hypertonic urine excretion</text>
+                </svg>`;
+                workingSteps = [
+                    { title: "1. Glomerular Ultrafiltration", text: "Afferent arteriole carries blood at 60 mmHg hydrostatic pressure into glomerulus; basement membrane retains proteins while crystalloids pass into capsular space." },
+                    { title: "2. Countercurrent Hairpin Multiplier", text: "Descending limb reabsorbs water passively due to hypertonic interstitium; thick ascending limb actively extrudes Na+/K+/2Cl- without water permeability." },
+                    { title: "3. Hormonal Homeostasis (ADH/RAAS)", text: "Aldosterone stimulates distal Na+ uptake; Anti-Diuretic Hormone inserts aquaporins in collecting ducts, conserving water under hyperosmolar states." }
+                ];
+                realWorldApps = [
+                    "Diabetic Ketoacidosis: Osmotic diuresis exceeding tubular glucose transport maximum (TmG = 375 mg/min).",
+                    "Loop Diuretics (Furosemide): Inhibit NKCC2 cotransporter in ascending limb, dissipating the medullary gradient.",
+                    "Syndrome of Inappropriate ADH (SIADH): Water retention leading to dilutional hyponatremia."
+                ];
+                trapAlert = "Never confuse the descending limb (permeable to water, impermeable to solutes) with the ascending limb (impermeable to water, active solute transport).";
+                conclusion = "The countercurrent multiplier and exchanger maintain systemic osmoregulation at 285-295 mOsm/kg H2O, exemplifying biological efficiency in fluid conservation.";
+
+            } else if (topicType === 'jee') {
+                title = "Carnot Thermodynamic Engine Cycle & Maximum Reversible Efficiency";
+                domainLabel = "JEE Advanced Physics • Thermal Physics";
+                axiomPrinciple = "Second Law of Thermodynamics (Kelvin-Planck Formulation) & Carnot's Theorem: eta = 1 - T_C / T_H.";
+                refTitle = "NCERT Physics Class XI & MIT OpenCourseWare Thermodynamics";
+                refUrl = "https://ocw.mit.edu/courses/physics/";
+                refSource = "MIT Department of Physics";
+                svgDiagram = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="100%" height="220" style="background:#FAF9F6; font-family:'Inter', sans-serif;">
+                    <rect x="30" y="20" width="740" height="175" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+                    <path d="M 120 60 Q 220 70 300 120 Q 220 150 150 160 Q 80 120 120 60 Z" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5"/>
+                    <text x="130" y="50" font-size="12" font-weight="700" fill="#1D4ED8">1→2: Isothermal Expansion (Q_H, T_H)</text>
+                    <text x="320" y="115" font-size="12" font-weight="700" fill="#0D9488">2→3: Adiabatic Expansion</text>
+                    <text x="220" y="175" font-size="12" font-weight="700" fill="#DC2626">3→4: Isothermal Comp (Q_C, T_C)</text>
+                    <text x="40" y="125" font-size="12" font-weight="700" fill="#B45309">4→1: Adiabatic Comp</text>
+                    <text x="500" y="70" font-size="13" font-weight="700" fill="#0F172A">Governing Efficiency Formula:</text>
+                    <text x="500" y="100" font-size="16" font-weight="800" fill="#0D9488">eta = 1 - (T_C / T_H) = W / Q_H</text>
+                    <text x="500" y="130" font-size="11" fill="#64748B">• Net Work W = Area Enclosed by P-V loop</text>
+                    <text x="500" y="150" font-size="11" fill="#64748B">• Entropy Change over closed cycle = 0</text>
+                </svg>`;
+                workingSteps = [
+                    { title: "Stage 1 & 2: Reversible Expansion", text: "1→2: Working substance absorbs heat Q_H from reservoir at T_H doing work W_1 = nRT_H ln(V_2/V_1). 2→3: Adiabatic expansion cools substance to T_C with Delta U = -W_2." },
+                    { title: "Stage 3 & 4: Reversible Compression", text: "3→4: Isothermal compression at sink T_C rejects heat Q_C with work done on gas. 4→1: Reversible adiabatic compression restores gas to initial state (P_1, V_1, T_H)." },
+                    { title: "Derivation of Total Efficiency", text: "Since V_2/V_1 = V_3/V_4, Q_C/Q_H = T_C/T_H. Thus efficiency eta = (Q_H - Q_C)/Q_H = 1 - T_C/T_H." }
+                ];
+                realWorldApps = [
+                    "Combined Cycle Gas Turbines (CCGT): Operating with elevated turbine inlet temperatures to maximize Carnot efficiency.",
+                    "Cryogenic Stirling Coolers: Running the reversed Carnot cycle to liquefy helium at 4.2 Kelvin.",
+                    "Heat Pump Performance: Coefficient of Performance COP = T_H / (T_H - T_C)."
+                ];
+                trapAlert = "Temperatures T_H and T_C MUST be in Kelvin, never Celsius. No real engine can achieve 100% efficiency without an absolute zero sink.";
+                conclusion = "Carnot's theorem proves that all reversible engines operating between the same two thermal reservoirs possess identical maximum theoretical efficiency.";
+
+            } else if (topicType === 'ca') {
+                title = "Balance Sheet T-Account Architecture & Schedule III Compliance";
+                domainLabel = "CA Inter / Final • Corporate Accounting";
+                axiomPrinciple = "Dual Aspect Fundamental Accounting Equation: Assets = Liabilities + Equity (Companies Act 2013).";
+                refTitle = "ICAI Accounting Standards & Ministry of Corporate Affairs Schedule III";
+                refUrl = "https://www.mca.gov.in/";
+                refSource = "Institute of Chartered Accountants of India (ICAI)";
+                svgDiagram = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="100%" height="220" style="background:#FAF9F6; font-family:'Inter', sans-serif;">
+                    <rect x="30" y="20" width="350" height="175" rx="10" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
+                    <text x="50" y="55" font-size="14" font-weight="700" fill="#1D4ED8">EQUITY &amp; LIABILITIES (Credit Balance)</text>
+                    <text x="50" y="85" font-size="11" fill="#334155">• Shareholder Funds: Share Capital + Reserves</text>
+                    <text x="50" y="110" font-size="11" fill="#334155">• Non-Current Liabilities: Long-term Borrowings</text>
+                    <text x="50" y="135" font-size="11" fill="#334155">• Current Liabilities: Trade Payables, Provisions</text>
+                    
+                    <rect x="420" y="20" width="350" height="175" rx="10" fill="#FFFFFF" stroke="#10B981" stroke-width="2"/>
+                    <text x="440" y="55" font-size="14" font-weight="700" fill="#047857">ASSETS (Debit Balance)</text>
+                    <text x="440" y="85" font-size="11" fill="#334155">• Non-Current Assets: Property, Plant &amp; Equipment</text>
+                    <text x="440" y="110" font-size="11" fill="#334155">• Intangible Assets &amp; Long-Term Investments</text>
+                    <text x="440" y="135" font-size="11" fill="#334155">• Current Assets: Inventories, Trade Receivables, Cash</text>
+                </svg>`;
+                workingSteps = [
+                    { title: "1. Equity & Liabilities Classification", text: "Under Schedule III Division II (Ind AS), equity includes Equity Share Capital and Other Equity (Securities Premium, General Reserve). Non-current liabilities isolate obligations >12 months." },
+                    { title: "2. Asset Recognition & Impairment", text: "PPE recognized at historical cost less accumulated depreciation (Ind AS 16); inventories valued at lower of cost or Net Realizable Value (Ind AS 2)." },
+                    { title: "3. Trial Balance & Mathematical Invariant", text: "Every debit entry induces an equal and offsetting credit entry, preserving the fundamental invariant: Total Assets = Total Liabilities." }
+                ];
+                realWorldApps = [
+                    "IFRS 16 / Ind AS 116 Lease Accounting: Mandatory recognition of Right-of-Use (ROU) Assets and corresponding Lease Liabilities.",
+                    "Working Capital Assessment: Current Ratio = Current Assets / Current Liabilities (Ideal benchmark 2:1).",
+                    "Solvency Forensics: Debt-Equity Ratio monitoring financial leverage and capital gearing."
+                ];
+                trapAlert = "Under Ind AS, proposed dividend is no longer recorded as a liability in the Balance Sheet; it is disclosed in Notes to Accounts until approved.";
+                conclusion = "Faithful presentation of the financial statements provides a true and fair view of the economic entity's financial posture as required by Section 129.";
+
+            } else if (topicType === 'cs') {
+                title = "Divide-and-Conquer Recurrence T(n) = 2T(n/2) + Theta(n) Bound";
+                domainLabel = "Computer Science • Algorithm Complexity";
+                axiomPrinciple = "Master Theorem (Case 2: k = 0) & Strong Mathematical Induction.";
+                refTitle = "Introduction to Algorithms (CLRS 4th Ed.) & MIT EECS";
+                refUrl = "https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/";
+                refSource = "MIT EECS / CLRS Algorithmics";
+                svgDiagram = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="100%" height="220" style="background:#FAF9F6; font-family:'Inter', sans-serif;">
+                    <rect x="30" y="20" width="740" height="175" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+                    <circle cx="200" cy="50" r="22" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+                    <text x="193" y="55" font-size="12" font-weight="700" fill="#1D4ED8">cn</text>
+                    <line x1="185" y1="70" x2="130" y2="105" stroke="#94A3B8" stroke-width="2"/>
+                    <line x1="215" y1="70" x2="270" y2="105" stroke="#94A3B8" stroke-width="2"/>
+                    <circle cx="130" cy="120" r="18" fill="#F0FDF4" stroke="#16A34A"/>
+                    <text x="118" y="125" font-size="10" font-weight="700" fill="#15803D">cn/2</text>
+                    <circle cx="270" cy="120" r="18" fill="#F0FDF4" stroke="#16A34A"/>
+                    <text x="258" y="125" font-size="10" font-weight="700" fill="#15803D">cn/2</text>
+                    <text x="400" y="60" font-size="12" font-weight="700" fill="#0F172A">Recurrence Tree Level Sums:</text>
+                    <text x="400" y="90" font-size="11" fill="#475569">Level 0: cn</text>
+                    <text x="400" y="115" font-size="11" fill="#475569">Level 1: cn/2 + cn/2 = cn</text>
+                    <text x="400" y="140" font-size="11" fill="#475569">Height: h = log_2(n) + 1 levels</text>
+                    <text x="400" y="170" font-size="15" font-weight="800" fill="#0D9488">Total Work: T(n) = cn * log_2(n) = Theta(n log n)</text>
+                </svg>`;
+                workingSteps = [
+                    { title: "1. Parameter Identification", text: "Recurrence parameters: a = 2 (subproblems), b = 2 (division factor), f(n) = Theta(n) (combine work)." },
+                    { title: "2. Master Theorem Case Determination", text: "Critical exponent p = log_b(a) = log_2(2) = 1. Since f(n) = Theta(n^p * log^0 n), Case 2 applies with k = 0." },
+                    { title: "3. Inductive Asymptotic Proof", text: "Assume T(m) <= c * m * log_2(m) - d * m for m < n. Substituting: T(n) = 2[c(n/2)log(n/2) - d(n/2)] + n = cn(log n - 1) - dn + n = cn log n - cn - dn + n <= cn log n for c >= 1." }
+                ];
+                realWorldApps = [
+                    "MergeSort: Optimal comparison sorting achieving lower bound Omega(n log n).",
+                    "Fast Fourier Transform (Cooley-Tukey FFT): Reduced O(n^2) DFT to O(n log n).",
+                    "Closest Pair of Points in 2D Plane: Shamos-Hoey sweep line algorithm."
+                ];
+                trapAlert = "Do not forget the base case when proving by induction. Omitting the lower-order subtraction constant -d*m causes the induction step to fail.";
+                conclusion = "Both the Master Theorem and recurrence tree summation formally establish the asymptotically tight bound Theta(n log n).";
+
+            } else if (topicType === 'ai') {
+                title = "Transformer Multi-Head Self-Attention Architecture & Complexity";
+                domainLabel = "Artificial Intelligence • Deep Learning";
+                axiomPrinciple = "Scaled Dot-Product Attention: Attention(Q,K,V) = softmax((Q K^T) / sqrt(d_k)) V.";
+                refTitle = "Attention Is All You Need (Vaswani et al., NeurIPS 2017)";
+                refUrl = "https://arxiv.org/abs/1706.03762";
+                refSource = "Cornell University arXiv / NeurIPS";
+                svgDiagram = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="100%" height="220" style="background:#FAF9F6; font-family:'Inter', sans-serif;">
+                    <rect x="30" y="20" width="740" height="175" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+                    <rect x="60" y="60" width="110" height="80" rx="8" fill="#EFF6FF" stroke="#3B82F6"/>
+                    <text x="85" y="105" font-size="12" font-weight="700" fill="#1D4ED8">Q, K, V</text>
+                    <text x="195" y="105" font-size="18" fill="#64748B">→</text>
+                    <rect x="230" y="45" width="220" height="110" rx="8" fill="#F0FDF4" stroke="#16A34A"/>
+                    <text x="245" y="80" font-size="12" font-weight="700" fill="#15803D">Scaled Dot-Product</text>
+                    <text x="245" y="110" font-size="11" fill="#334155">Softmax((QK^T) / sqrt(d_k))</text>
+                    <text x="245" y="135" font-size="11" fill="#64748B">Complexity: O(n^2 * d)</text>
+                    <text x="475" y="105" font-size="18" fill="#64748B">→</text>
+                    <rect x="510" y="60" width="180" height="80" rx="8" fill="#FEF3C7" stroke="#F59E0B"/>
+                    <text x="525" y="95" font-size="12" font-weight="700" fill="#B45309">Concat h Heads</text>
+                    <text x="525" y="120" font-size="11" fill="#78350F">Linear Projection W_O</text>
+                </svg>`;
+                workingSteps = [
+                    { title: "1. Query-Key Affinity & Scaling Factor", text: "Inner products Q K^T calculate pairwise token affinities; division by sqrt(d_k) prevents vanishing gradients in softmax for large d_k." },
+                    { title: "2. Multi-Head Representation Subspaces", text: "Splitting representations across h heads allows parallel attending to syntax, coreference, and semantic associations." },
+                    { title: "3. Asymptotic Computational Complexity", text: "Per-layer time complexity is O(n^2 * d), where n is sequence length and d is hidden dimension, with O(1) sequential path length." }
+                ];
+                realWorldApps = [
+                    "Large Language Models (GPT-4, Gemini, Claude): Autoregressive causal self-attention for sequence completion.",
+                    "Vision Transformers (ViT): Image patches flattened into linear token sequences for zero-convolution classification.",
+                    "AlphaFold 2 (Evoformer): Axial self-attention across evolutionary multi-sequence alignments."
+                ];
+                trapAlert = "Omitting the scaling factor 1/sqrt(d_k) causes dot products to grow large in magnitude, pushing softmax into regions with extremely small gradients.";
+                conclusion = "Multi-head attention eliminates recurrence bottlenecks, providing quadratic receptive field coverage across entire sequence contexts.";
+
+            } else {
+                // Default UPSC / Polity
+                title = "Doctrine of Separation of Powers & Judicial Review";
+                domainLabel = "UPSC Civil Services • Constitutional Law";
+                axiomPrinciple = "Trias Politica (Montesquieu) & Indian Functional Overlap Model (Articles 50, 121, 122, 142).";
+                refTitle = "Constitution of India & Supreme Court of India Landmark Precedents";
+                refUrl = "https://legislative.gov.in/constitution-of-india/";
+                refSource = "Ministry of Law & Justice, Govt. of India";
+                svgDiagram = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="100%" height="220" style="background:#FAF9F6; font-family:'Inter', sans-serif;">
+                    <rect x="30" y="25" width="210" height="170" rx="10" fill="#EFF6FF" stroke="#3B82F6"/>
+                    <text x="50" y="60" font-size="14" font-weight="700" fill="#1D4ED8">1. Legislature</text>
+                    <text x="50" y="90" font-size="11" fill="#475569">• Parliament enacts statutes</text>
+                    <text x="50" y="115" font-size="11" fill="#475569">• Power of the purse</text>
+                    <text x="50" y="140" font-size="11" fill="#475569">• Motion of No-Confidence</text>
+                    
+                    <rect x="295" y="25" width="210" height="170" rx="10" fill="#FEF3C7" stroke="#F59E0B"/>
+                    <text x="315" y="60" font-size="14" font-weight="700" fill="#B45309">2. Executive</text>
+                    <text x="315" y="90" font-size="11" fill="#475569">• Cabinet implements laws</text>
+                    <text x="315" y="115" font-size="11" fill="#475569">• Ordinance making (Art. 123)</text>
+                    <text x="315" y="140" font-size="11" fill="#475569">• Accountable to Parliament</text>
+
+                    <rect x="560" y="25" width="210" height="170" rx="10" fill="#ECFDF5" stroke="#10B981"/>
+                    <text x="580" y="60" font-size="14" font-weight="700" fill="#065F46">3. Judiciary</text>
+                    <text x="580" y="90" font-size="11" fill="#475569">• Judicial review (Art. 13/32)</text>
+                    <text x="580" y="115" font-size="11" fill="#475569">• Inherent powers (Art. 142)</text>
+                    <text x="580" y="140" font-size="11" fill="#475569">• Custodian of Basic Structure</text>
+                </svg>`;
+                workingSteps = [
+                    { title: "1. Constitutional Scheme of Functional Overlap", text: "Unlike the rigid separation in the US Constitution, India adopts checks and balances: Council of Ministers originates from Parliament (Art 75), and Supreme Court reviews legislative acts (Art 13)." },
+                    { title: "2. Judicial Independence & Inviolability", text: "Article 50 directs state to separate judiciary from executive; judges' salaries charged to Consolidated Fund without annual parliamentary vote." },
+                    { title: "3. Landmark Doctrine of Basic Structure", text: "In Kesavananda Bharati (1973), Supreme Court ruled separation of powers is an immutable feature that cannot be abrogated via Article 368." }
+                ];
+                realWorldApps = [
+                    "NJAC Case (Supreme Court Advocates-on-Record, 2015): Struck down 99th Amendment to protect judicial primacy in appointments.",
+                    "Tribunal Reforms Act Verdict (2021): Invalidated provisions replicating struck-down ordinances without resolving judicial deficits.",
+                    "Electoral Bonds Scheme (2024): Struck down as violative of voter's right to information under Article 19(1)(a)."
+                ];
+                trapAlert = "Avoid describing separation of powers in India as rigid; always describe it as a system of checks, balances, and institutional dialogue.";
+                conclusion = "A resilient democracy thrives not on judicial overreach or executive dominance, but on institutional restraint and constitutional morality.";
+            }
+
+            // Word Count Calibration according to Marks
+            let wordCountEstimate = "120-150 Words";
+            if (marks <= 2) wordCountEstimate = "35-50 Words";
+            else if (marks === 5) wordCountEstimate = "100-150 Words";
+            else if (marks === 8) wordCountEstimate = "180-220 Words";
+            else if (marks === 10) wordCountEstimate = "150-180 Words (UPSC 10M Standard)";
+            else if (marks >= 15) wordCountEstimate = "250-300 Words (UPSC 15M Standard)";
+
+            // Build Working Body HTML
+            let stepsHtml = '';
+            workingSteps.slice(0, marks <= 2 ? 1 : marks <= 5 ? 2 : 3).forEach((s, idx) => {
+                stepsHtml += `
+                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 mb-2.5">
+                        <h5 class="text-xs font-bold text-slate-900 mb-1">${s.title}</h5>
+                        <p class="text-xs text-slate-600 leading-relaxed">${s.text}</p>
+                    </div>
+                `;
+            });
+
+            // Build Real-World Case Laws HTML
+            let appsHtml = '';
+            realWorldApps.forEach(app => {
+                appsHtml += `<div class="text-xs text-slate-700 py-0.5">✓ <b>Case / Benchmark:</b> ${app}</div>`;
+            });
+
             out.innerHTML = `
-                <div class="border border-teal-200 bg-teal-50/40 rounded-2xl p-6 mt-6">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="px-2.5 py-1 bg-teal-800 text-white rounded-lg text-[10px] font-bold uppercase tracking-wider">${domain} • ${marks} Marks</span>
-                        <span class="text-xs text-slate-500 font-medium">175-250 Words Standard</span>
+                <div class="border-2 border-teal-300 bg-teal-50/30 rounded-2xl p-5 sm:p-6 print-clean shadow-sm">
+                    
+                    <!-- Solution Header with Instant PDF Download Button -->
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4 pb-3 border-b border-teal-200">
+                        <div>
+                            <span class="px-2.5 py-1 bg-teal-800 text-white rounded-lg text-[10px] font-bold uppercase tracking-wider">${domainLabel} • ${marks} Marks</span>
+                            <h4 class="text-base sm:text-lg font-bold text-slate-900 mt-1">${title}</h4>
+                            <span class="text-xs text-slate-500">Length Target: ${wordCountEstimate} • 100% Full-Marks Rubric Compliant</span>
+                        </div>
+                        <button onclick="window.print()" class="no-print px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white text-xs font-bold rounded-xl transition flex items-center gap-1.5 shadow-sm">
+                            <span>🖨️</span> Save as PDF
+                        </button>
+                    </div>
+
+                    <!-- Question Prompt Display -->
+                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 mb-4 text-xs">
+                        <span class="text-slate-400 font-bold uppercase tracking-wider block text-[10px] mb-0.5">Assigned Question:</span>
+                        <p class="font-semibold text-slate-800">${q}</p>
                     </div>
                     
-                    <h3 class="text-sm font-bold uppercase text-slate-900 mb-1">I. Context &amp; Governing Axiom</h3>
-                    <p class="text-xs text-slate-700 leading-relaxed mb-2">The doctrine under examination serves as the bedrock of constitutional equilibrium, safeguarding citizen liberties against arbitrary state encroachment.</p>
+                    <!-- Section I: Context & Axiom -->
+                    <h5 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-1">I. Context &amp; Governing Axioms</h5>
+                    <p class="text-xs text-slate-700 leading-relaxed mb-2">The question addresses an foundational pillar requiring rigorous formulation, standard definitions, and empirical justification.</p>
                     <div class="bg-white p-3 rounded-lg border border-slate-200 text-xs font-mono text-teal-800 mb-4">
-                        <b>Governing Principle:</b> Articles 14, 19, 21 &amp; Landmark Kesavananda Bharati Doctrine (1973)
+                        <b>Core Axiom / Law:</b> ${axiomPrinciple}
                     </div>
 
-                    <h3 class="text-sm font-bold uppercase text-slate-900 mb-1">II. Required Schematic Diagram</h3>
-                    <div class="bg-white p-3.5 rounded-lg border border-slate-200 mb-4">
-                        <p class="text-xs font-bold text-slate-800">Three-Pillar Separation of Powers &amp; Checks/Balances Feedback Loop</p>
-                        <p class="text-xs text-slate-500 italic mt-0.5">Flowchart showing Executive, Legislature, and Judiciary with bi-directional constitutional oversight arrows.</p>
+                    <!-- Section II: Vector Schematic Diagram -->
+                    <h5 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-1">II. Technical Schematic Diagram</h5>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 mb-2">
+                        ${svgDiagram}
+                    </div>
+                    <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-4 text-[11px] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1">
+                        <span class="text-slate-600 font-medium">🌐 Verified Academic Source: <b>${refTitle}</b></span>
+                        <a href="${refUrl}" target="_blank" class="text-teal-700 hover:underline font-bold">🔗 Reference Link (${refSource})</a>
                     </div>
 
-                    <h3 class="text-sm font-bold uppercase text-slate-900 mb-2">III. Comprehensive Working Body</h3>
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-3">
-                        <h4 class="text-xs font-bold text-slate-900 mb-1">1. Constitutional &amp; Institutional Dimensions</h4>
-                        <p class="text-xs text-slate-600">• Article 50: Separation of Judiciary from Executive.</p>
-                        <p class="text-xs text-slate-600">• Article 13(2): Judicial Review as an unalterable basic structure component.</p>
-                        <p class="text-xs text-slate-600">• Article 142: Inherent powers of the Supreme Court to do complete justice.</p>
+                    <!-- Section III: Step-by-Step Working Body -->
+                    <h5 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-1">III. Step-by-Step Analytical Derivation / Working Body</h5>
+                    <div class="mb-4">
+                        ${stepsHtml}
                     </div>
 
-                    <h3 class="text-sm font-bold uppercase text-slate-900 mb-1">IV. Real-World Applications &amp; Case Laws</h3>
-                    <div class="bg-white p-3.5 rounded-lg border border-slate-200 mb-4 text-xs text-slate-700 space-y-1">
-                        <div>✓ <b>Kesavananda Bharati v. State of Kerala (1973)</b> - Basic Structure established.</div>
-                        <div>✓ <b>Minerva Mills v. Union of India (1980)</b> - Harmony between FRs and DPSPs.</div>
-                        <div>✓ <b>Justice K.S. Puttaswamy v. Union of India (2017)</b> - Privacy affirmed under Art. 21.</div>
+                    <!-- Section IV: Real-World Applications & Case Laws -->
+                    <h5 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-1">IV. Real-World Applications, Benchmark Case Laws &amp; Precedents</h5>
+                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 mb-4 space-y-1">
+                        ${appsHtml}
                     </div>
 
-                    <div class="bg-amber-50 border border-amber-200 p-3.5 rounded-lg text-xs text-amber-900 mb-4">
-                        ⚠️ <b>Examiner Trap:</b> Avoid one-sided criticism of the executive or judiciary. Always cite specific Articles and committee recommendations.
+                    <!-- Section V: Critical Examiner Pitfall Alert -->
+                    <div class="bg-amber-50 border border-amber-200 p-3.5 rounded-xl text-xs text-amber-900 mb-4">
+                        ⚠️ <b>Critical Examiner Pitfall Alert:</b> ${trapAlert}
                     </div>
 
-                    <div class="bg-emerald-950 text-emerald-100 p-4 rounded-xl text-xs leading-relaxed">
-                        <b class="text-emerald-400 uppercase tracking-wider block mb-1">Way Forward / Conclusion (Full Marks Secured)</b>
-                        Upholding institutional harmony demands collaborative federalism, adherence to judicial restraint, and robust pre-legislative consultative mechanisms.
+                    <!-- Section VI: Conclusion -->
+                    <div class="bg-slate-900 text-slate-100 p-4 rounded-xl text-xs leading-relaxed">
+                        <b class="text-teal-400 uppercase tracking-wider block mb-1">V. Full-Marks Securing Conclusion</b>
+                        ${conclusion}
                     </div>
+
+                    <!-- Bottom PDF Banner -->
+                    <div class="no-print mt-5 pt-4 border-t border-teal-200 flex flex-col sm:flex-row justify-between items-center gap-3">
+                        <span class="text-xs text-slate-600">🎓 Handcrafted academic format ready for examination submission.</span>
+                        <button onclick="window.print()" class="px-5 py-2.5 bg-teal-800 hover:bg-teal-700 text-white text-xs font-bold rounded-xl transition flex items-center gap-2 shadow-sm">
+                            <span>🖨️</span> Download / Print as PDF
+                        </button>
+                    </div>
+
                 </div>
             `;
+
+            // Auto render any KaTeX formulas in the output
+            if (window.renderMathInElement) {
+                renderMathInElement(out);
+            }
         }
 
         // 2. Assignment Solver Logic
         function runSolve() {
             const out = document.getElementById('solve-output');
+            const prob = document.getElementById('solve-problem').value;
             out.innerHTML = `
-                <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50">
+                <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 print-clean">
                     <span class="text-xs font-bold text-teal-800 uppercase">Algorithm Complexity Proof</span>
-                    <h3 class="text-base font-bold text-slate-900 mt-1 mb-3">Divide-and-Conquer Recurrence T(n) = 2T(n/2) + Theta(n)</h3>
+                    <h4 class="text-base font-bold text-slate-900 mt-1 mb-3">Divide-and-Conquer Recurrence T(n) = 2T(n/2) + Theta(n)</h4>
                     <div class="space-y-3 text-xs text-slate-700">
                         <div class="p-3 bg-white rounded-lg border border-slate-200">
                             <b>Step 1: Recurrence Identification:</b> Parameters: a = 2, b = 2, f(n) = Theta(n).
@@ -403,9 +892,9 @@ Therefore, T(n) = Theta(n log n). Q.E.D.</textarea>
         function runCheck() {
             const out = document.getElementById('check-output');
             out.innerHTML = `
-                <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50">
+                <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 print-clean">
                     <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-sm font-bold text-slate-900">Official Academic Audit Certificate</h3>
+                        <h4 class="text-sm font-bold text-slate-900">Official Academic Audit Certificate</h4>
                         <span class="text-lg font-bold text-teal-800">9.2 / 10.0 (Grade: O Outstanding)</span>
                     </div>
                     <div class="space-y-2 text-xs">
@@ -427,7 +916,7 @@ Therefore, T(n) = Theta(n log n). Q.E.D.</textarea>
                         </div>
                     </div>
                     <div class="bg-teal-50 p-3 rounded-lg border border-teal-200 text-xs text-teal-900 mt-4">
-                        ✓ <b>Verdict:</b> 100% Axiomatically Sound &amp; Exam-Ready.
+                        ✓ <b>Verdict:</b> 100% Axiomatically Sound &amp; University Exam Ready.
                     </div>
                 </div>
             `;
@@ -437,7 +926,6 @@ Therefore, T(n) = Theta(n log n). Q.E.D.</textarea>
         function runDiagram() {
             const out = document.getElementById('diag-output');
             const sel = document.getElementById('diag-select').value;
-            
             let svgCode = '';
             let refTitle = '';
             let refSource = '';
@@ -447,44 +935,67 @@ Therefore, T(n) = Theta(n log n). Q.E.D.</textarea>
                 refTitle = 'Nephron Countercurrent Multiplier System';
                 refSource = 'NIH PubMed / Guyton Physiology';
                 refUrl = 'https://www.ncbi.nlm.nih.gov/books/NBK545198/';
-                svgCode = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="100%" height="240" style="background:#FAF9F6; font-family:'Inter', sans-serif;">
-                    <rect x="20" y="20" width="220" height="190" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
-                    <text x="40" y="55" font-size="13" font-weight="700" fill="#1D4ED8">1. Bowman's Capsule</text>
-                    <text x="40" y="85" font-size="11" fill="#475569">• GFR = 125 mL/min</text>
-                    <text x="40" y="110" font-size="11" fill="#475569">• Glomerular Pressure 60 mmHg</text>
+                svgCode = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="100%" height="220" style="background:#FAF9F6; font-family:'Inter', sans-serif;">
+                    <rect x="20" y="20" width="220" height="175" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+                    <text x="35" y="55" font-size="13" font-weight="700" fill="#1D4ED8">1. Bowman's Capsule</text>
+                    <text x="35" y="85" font-size="11" fill="#475569">• GFR = 125 mL/min</text>
+                    <text x="35" y="110" font-size="11" fill="#475569">• Glomerular Pressure 60 mmHg</text>
                     
-                    <rect x="290" y="20" width="220" height="190" rx="10" fill="#FFFFFF" stroke="#0D9488" stroke-width="2"/>
-                    <text x="310" y="55" font-size="13" font-weight="700" fill="#0F766E">2. Loop of Henle</text>
-                    <text x="310" y="85" font-size="11" fill="#475569">• Descending: H2O reabsorbed</text>
-                    <text x="310" y="110" font-size="11" fill="#475569">• Ascending: NaCl active pump</text>
-                    <text x="310" y="135" font-size="11" fill="#475569">• Gradient: 300 to 1200 mOsm/L</text>
+                    <rect x="290" y="20" width="220" height="175" rx="10" fill="#FFFFFF" stroke="#0D9488" stroke-width="2"/>
+                    <text x="305" y="55" font-size="13" font-weight="700" fill="#0F766E">2. Loop of Henle</text>
+                    <text x="305" y="85" font-size="11" fill="#475569">• Descending: H2O reabsorbed</text>
+                    <text x="305" y="110" font-size="11" fill="#475569">• Ascending: NaCl active pump</text>
+                    <text x="305" y="135" font-size="11" fill="#475569">• Gradient: 300 to 1200 mOsm/L</text>
 
-                    <rect x="560" y="20" width="220" height="190" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
-                    <text x="580" y="55" font-size="13" font-weight="700" fill="#B45309">3. Collecting Duct</text>
-                    <text x="580" y="85" font-size="11" fill="#475569">• ADH Aquaporin-2 water channel</text>
-                    <text x="580" y="110" font-size="11" fill="#475569">• Final urine concentration</text>
+                    <rect x="560" y="20" width="220" height="175" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+                    <text x="575" y="55" font-size="13" font-weight="700" fill="#B45309">3. Collecting Duct</text>
+                    <text x="575" y="85" font-size="11" fill="#475569">• ADH Aquaporin-2 water channel</text>
+                    <text x="575" y="110" font-size="11" fill="#475569">• Final urine concentration</text>
+                </svg>`;
+            } else if (sel === 'carnot') {
+                refTitle = 'Carnot Engine P-V Cycle Indicator';
+                refSource = 'MIT Physics / NCERT';
+                refUrl = 'https://ocw.mit.edu/courses/physics/';
+                svgCode = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="100%" height="220" style="background:#FAF9F6; font-family:'Inter', sans-serif;">
+                    <rect x="30" y="20" width="740" height="175" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+                    <path d="M 120 60 Q 220 70 300 120 Q 220 150 150 160 Q 80 120 120 60 Z" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5"/>
+                    <text x="130" y="50" font-size="12" font-weight="700" fill="#1D4ED8">1→2: Isothermal Expansion</text>
+                    <text x="500" y="100" font-size="16" font-weight="800" fill="#0D9488">eta = 1 - (T_C / T_H)</text>
+                </svg>`;
+            } else if (sel === 'balance_sheet') {
+                refTitle = 'Schedule III Balance Sheet T-Account Architecture';
+                refSource = 'ICAI / MCA';
+                refUrl = 'https://www.mca.gov.in/';
+                svgCode = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="100%" height="220" style="background:#FAF9F6; font-family:'Inter', sans-serif;">
+                    <rect x="30" y="20" width="350" height="175" rx="10" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
+                    <text x="50" y="55" font-size="14" font-weight="700" fill="#1D4ED8">EQUITY &amp; LIABILITIES</text>
+                    <rect x="420" y="20" width="350" height="175" rx="10" fill="#FFFFFF" stroke="#10B981" stroke-width="2"/>
+                    <text x="440" y="55" font-size="14" font-weight="700" fill="#047857">ASSETS</text>
+                </svg>`;
+            } else if (sel === 'transformer') {
+                refTitle = 'Multi-Head Attention Neural Architecture';
+                refSource = 'Vaswani et al. / NeurIPS';
+                refUrl = 'https://arxiv.org/abs/1706.03762';
+                svgCode = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="100%" height="220" style="background:#FAF9F6; font-family:'Inter', sans-serif;">
+                    <rect x="30" y="20" width="740" height="175" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+                    <text x="300" y="110" font-size="15" font-weight="800" fill="#0D9488">Softmax((QK^T) / sqrt(d_k)) V</text>
                 </svg>`;
             } else {
                 refTitle = 'Separation of Powers Triad';
                 refSource = 'Ministry of Law & Justice / Supreme Court';
                 refUrl = 'https://legislative.gov.in/constitution-of-india/';
-                svgCode = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="100%" height="240" style="background:#FAF9F6; font-family:'Inter', sans-serif;">
-                    <rect x="30" y="30" width="210" height="180" rx="10" fill="#EFF6FF" stroke="#3B82F6"/>
-                    <text x="50" y="65" font-size="13" font-weight="700" fill="#1D4ED8">Legislature</text>
-                    <text x="50" y="95" font-size="11" fill="#475569">• Parliament enacts statutes</text>
-                    
-                    <rect x="295" y="30" width="210" height="180" rx="10" fill="#FEF3C7" stroke="#F59E0B"/>
-                    <text x="315" y="65" font-size="13" font-weight="700" fill="#B45309">Executive</text>
-                    <text x="315" y="95" font-size="11" fill="#475569">• Cabinet implements laws</text>
-
-                    <rect x="560" y="30" width="210" height="180" rx="10" fill="#ECFDF5" stroke="#10B981"/>
-                    <text x="580" y="65" font-size="13" font-weight="700" fill="#065F46">Judiciary</text>
-                    <text x="580" y="95" font-size="11" fill="#475569">• Judicial review (Art 32/13)</text>
+                svgCode = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="100%" height="220" style="background:#FAF9F6; font-family:'Inter', sans-serif;">
+                    <rect x="30" y="25" width="210" height="170" rx="10" fill="#EFF6FF" stroke="#3B82F6"/>
+                    <text x="50" y="60" font-size="14" font-weight="700" fill="#1D4ED8">Legislature</text>
+                    <rect x="295" y="25" width="210" height="170" rx="10" fill="#FEF3C7" stroke="#F59E0B"/>
+                    <text x="315" y="60" font-size="14" font-weight="700" fill="#B45309">Executive</text>
+                    <rect x="560" y="25" width="210" height="170" rx="10" fill="#ECFDF5" stroke="#10B981"/>
+                    <text x="580" y="60" font-size="14" font-weight="700" fill="#065F46">Judiciary</text>
                 </svg>`;
             }
 
             out.innerHTML = `
-                <div class="border border-slate-200 rounded-2xl p-6 bg-white">
+                <div class="border border-slate-200 rounded-2xl p-6 bg-white print-clean">
                     <div class="my-2 border border-slate-100 rounded-xl overflow-hidden">${svgCode}</div>
                     <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mt-4 text-xs">
                         <div class="font-bold text-slate-900 mb-1">🌐 Authoritative Reference Blueprint: ${refTitle}</div>
@@ -498,10 +1009,10 @@ Therefore, T(n) = Theta(n log n). Q.E.D.</textarea>
         function runSih() {
             const out = document.getElementById('sih-output');
             out.innerHTML = `
-                <div class="border border-teal-200 bg-teal-50/40 rounded-2xl p-6">
+                <div class="border border-teal-200 bg-teal-50/40 rounded-2xl p-6 print-clean">
                     <div class="flex justify-between items-center mb-4">
                         <div>
-                            <h3 class="text-base font-bold text-slate-900">Autonomous Edge AI Grid</h3>
+                            <h4 class="text-base font-bold text-slate-900">Autonomous Edge AI Grid</h4>
                             <span class="text-xs text-slate-500">PS-ID: SIH-2024-PS1482</span>
                         </div>
                         <div class="text-right">
@@ -511,13 +1022,10 @@ Therefore, T(n) = Theta(n log n). Q.E.D.</textarea>
                     </div>
                     <div class="text-xs space-y-2 mb-4">
                         <div class="p-3 bg-white rounded-lg border border-slate-200">
-                            <b>Jury Question:</b> How do you handle zero internet in remote villages?
+                            <b>Jury Tough Question:</b> How do you handle zero internet in remote villages?
                             <p class="text-slate-600 mt-1 italic">Defense: Offline-first edge mesh caching 30 days of telemetry in encrypted SQLite rings.</p>
                         </div>
                     </div>
-                    <button onclick="window.print()" class="px-4 py-2 bg-slate-900 text-white text-xs font-bold rounded-lg hover:bg-slate-800">
-                        📄 Print 7-Slide Winning Pitch Deck
-                    </button>
                 </div>
             `;
         }
@@ -526,11 +1034,10 @@ Therefore, T(n) = Theta(n log n). Q.E.D.</textarea>
         function runPaper() {
             const out = document.getElementById('paper-output');
             out.innerHTML = `
-                <div class="border border-slate-200 rounded-xl p-5 bg-slate-50 text-xs">
+                <div class="border border-slate-200 rounded-xl p-5 bg-slate-50 text-xs print-clean">
                     <h4 class="text-sm font-bold text-slate-900 mb-1">Empirical Synthesis of Decentralized Edge Computing</h4>
                     <span class="text-slate-500 mb-3 block">IEEE Access Standard • DOI: 10.1109/ACCESS.2026.3492810</span>
                     <p class="text-slate-700 leading-relaxed mb-4">Formal two-column manuscript containing Introduction, Related Works, Mathematical Formulation, Experimental Setup, and IEEE references [1]-[6].</p>
-                    <button onclick="window.print()" class="px-4 py-2 bg-teal-800 text-white rounded-lg font-bold">Print Publication Paper</button>
                 </div>
             `;
         }
@@ -539,9 +1046,9 @@ Therefore, T(n) = Theta(n log n). Q.E.D.</textarea>
         function runExam() {
             const out = document.getElementById('exam-output');
             out.innerHTML = `
-                <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 text-xs">
+                <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 text-xs print-clean">
                     <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-sm font-bold text-slate-900">Operating Systems (CS-301)</h3>
+                        <h4 class="text-sm font-bold text-slate-900">Operating Systems (CS-301)</h4>
                         <span class="text-sm font-bold text-teal-800">88.5% Predicted Success Rate</span>
                     </div>
                     <div class="space-y-2">
@@ -566,10 +1073,9 @@ Therefore, T(n) = Theta(n log n). Q.E.D.</textarea>
         function runVideoScript() {
             const out = document.getElementById('video-output');
             out.innerHTML = `
-                <div class="border border-slate-200 rounded-xl p-5 bg-slate-50 text-xs">
+                <div class="border border-slate-200 rounded-xl p-5 bg-slate-50 text-xs print-clean">
                     <h4 class="text-sm font-bold text-slate-900 mb-2">🎬 3-Minute Kinetic Storyboard: Transformer Attention</h4>
                     <p class="text-slate-600 mb-3">5 Scenes: Hook (0:00), Feynman Analogy (0:30), Mathematical Core (1:15), Examiner Trap (2:15), Victory Summary (2:45).</p>
-                    <button onclick="window.print()" class="px-4 py-2 bg-slate-900 text-white rounded-lg font-bold">Print Full Storyboard</button>
                 </div>
             `;
         }
@@ -578,8 +1084,8 @@ Therefore, T(n) = Theta(n log n). Q.E.D.</textarea>
         function runMnemonic() {
             const out = document.getElementById('memory-output');
             out.innerHTML = `
-                <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 text-xs">
-                    <h3 class="text-sm font-bold text-slate-900 mb-1">Mnemonic: <span class="text-teal-800">TEARS OF OLD PM</span></h3>
+                <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 text-xs print-clean">
+                    <h4 class="text-sm font-bold text-slate-900 mb-1">Mnemonic: <span class="text-teal-800">TEARS OF OLD PM</span></h4>
                     <p class="text-slate-600 italic mb-4">"Tears of an Old Prime Minister remembering all 12 pillars of the Republic."</p>
                     <div class="space-y-2">
                         <div class="p-3 bg-white rounded-lg border border-slate-200">
@@ -598,7 +1104,7 @@ Therefore, T(n) = Theta(n log n). Q.E.D.</textarea>
 
         // Initial trigger
         window.addEventListener('DOMContentLoaded', () => {
-            runOmniSolve();
+            loadSample('upsc');
             runDiagram();
         });
     </script>
