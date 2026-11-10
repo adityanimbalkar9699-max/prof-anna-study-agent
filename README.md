@@ -1,11 +1,16 @@
 # 🎓 Prof. Anna • World-Class All-Rounder Sovereign Professor & Full-Stack Web App
 ### *Universal Pedagogical Guide, Multi-Disciplinary Evaluator & Turnkey Deployable Web Platform*
 
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://python.org)
+[![Live Website](https://img.shields.io/badge/Live%20App-Visit%20Website-0D9488?style=for-the-badge&logo=google-chrome&logoColor=white)](https://adityanimbalkar9699-max.github.io/prof-anna-study-agent/)
 [![Verification](https://img.shields.io/badge/Verification-32%2F32%20Tests%20Exit%20Code%200-brightgreen.svg)](tests/)
 [![Universal](https://img.shields.io/badge/Domains-UPSC%20%7C%20NEET%20%7C%20JEE%20%7C%20CA%20%7C%20Law%20%7C%20AI-orange.svg)](#-all-rounder-omni-disciplinary-coverage)
-[![Deploy Ready](https://img.shields.io/badge/Deploy-Render%20%7C%20Railway%20%7C%20Streamlit%20%7C%20Docker-blueviolet.svg)](#-deployment-options)
-[![Aesthetic](https://img.shields.io/badge/Design-Anti--AI%20Luxury%20Craft-0F172A.svg)](anna/core/pdf_generator.py)
+[![Deploy Ready](https://img.shields.io/badge/Deploy-GitHub%20Pages%20%7C%20Render%20%7C%20Streamlit%20%7C%20Docker-blueviolet.svg)](#-deployment-options)
+
+---
+
+### 🌐 Live Production Application
+👉 **Access the App Directly Anywhere (Mobile, Tablet, Desktop)**:  
+### 🔗 [https://adityanimbalkar9699-max.github.io/prof-anna-study-agent/](https://adityanimbalkar9699-max.github.io/prof-anna-study-agent/)
 
 ---
 
