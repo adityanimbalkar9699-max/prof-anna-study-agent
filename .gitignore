@@ -35,3 +35,5 @@ anna_output/
 # OS specific
 .DS_Store
 Thumbs.db
+
+test_output_omni/

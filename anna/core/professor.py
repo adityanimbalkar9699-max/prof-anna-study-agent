@@ -1,14 +1,17 @@
 """
 Prof. Anna - Master Academic Sovereign Agent & Pedagogical Guide
 ================================================================
-Unifies all 7 academic engines:
-1. Assignment Solver & Mathematical Proof Engine
-2. Solution Auditor, Grader & Rubric Checker ("City & Cheque")
-3. Anti-AI Luxury Publication-Grade PDF Generator
-4. Vector Diagram Generator with Curated Live Fallback Links
-5. Presentation Cloner & SIH Hackathon Pattern Optimizer
-6. IEEE Access Two-Column Research Paper Synthesizer
-7. Pareto 80/20 PYQ Exam Forensics & Success Rate Checklist
+Unifies all academic & competitive examination engines:
+1. Universal Omni-Disciplinary Solver & Mark-Targeted Answer Formulator (UPSC, NEET, JEE, CA, CS, Law)
+2. Assignment Solver & Mathematical Proof Engine
+3. Solution Auditor, Grader & Rubric Checker ("City & Cheque")
+4. Anti-AI Luxury Publication-Grade PDF Generator
+5. Universal Publication Diagram Studio with Curated Live Fallback Links (NCERT, PubMed, Nature, UPSC, IEEE)
+6. Presentation Cloner & SIH Hackathon Pattern Optimizer
+7. 60fps Kinetic Video Script & Storyboard Engine
+8. IEEE Access Two-Column Research Paper Synthesizer
+9. Pareto 80/20 PYQ Exam Forensics & Success Rate Checklist
+10. Mnemonic & Spatial Memory Palace (Method of Loci) Studio
 """
 
 import os
@@ -24,6 +27,10 @@ from anna.core.ieee_paper_engine import IEEEPaperEngine
 from anna.core.exam_forensics import ExamForensicsEngine, ExamReadinessReport
 from anna.core.feynman_analogizer import FeynmanAnalogizer, FeynmanIntuition
 from anna.core.flashcard_generator import FlashcardGenerator
+from anna.core.omni_solver import OmniDisciplinarySolver, OmniAnswer
+from anna.core.omni_diagrams import OmniDiagramStudio
+from anna.core.video_script_engine import VideoScriptEngine, VideoProductionPackage
+from anna.core.memory_palace import MemoryPalaceStudio, MnemonicPackage
 
 
 class ProfAnna:
@@ -51,8 +58,52 @@ class ProfAnna:
         self.exam_engine = ExamForensicsEngine(university=self.university)
         self.feynman_engine = FeynmanAnalogizer()
         self.flashcard_engine = FlashcardGenerator(output_dir=os.path.join(base_output_dir, "flashcards"))
+        
+        # Omni-Disciplinary & Multi-Discipline Sovereign Engines
+        self.omni_solver = OmniDisciplinarySolver()
+        self.omni_diagrams = OmniDiagramStudio(output_dir=os.path.join(base_output_dir, "diagrams"))
+        self.video_engine = VideoScriptEngine(output_dir=os.path.join(base_output_dir, "video_scripts"))
+        self.memory_palace = MemoryPalaceStudio()
 
-    # 1. Assignment Solver
+    # 1. Universal Omni-Disciplinary Answer Formulator
+    def solve_omni(
+        self,
+        question: str,
+        target_marks: int = 8,
+        domain_hint: Optional[str] = None,
+    ) -> OmniAnswer:
+        """Formulates exact mark-targeted answers across UPSC, CA, NEET, JEE, Law, and AI."""
+        return self.omni_solver.solve(question, target_marks=target_marks, domain_hint=domain_hint)
+
+    # 2. Universal Diagram Studio with Fallback
+    def render_omni_diagram(
+        self,
+        topic: str,
+        diagram_type: str = "auto",
+        filename_prefix: str = "omni_diagram",
+    ) -> Dict[str, Any]:
+        """Renders medical, polity, commerce, physics, or CS diagrams with verified links."""
+        return self.omni_diagrams.render_diagram(topic, diagram_type=diagram_type, filename_prefix=filename_prefix)
+
+    # 3. Kinetic Video Script & Storyboard Engine
+    def generate_video_package(
+        self,
+        topic: str,
+        domain: str = "Deep Learning / Machine Learning",
+        target_audience: str = "University Students & Exam Candidates",
+        total_minutes: int = 3,
+    ) -> VideoProductionPackage:
+        """Generates timestamped video lecture scripts and 60fps kinetic animated decks."""
+        return self.video_engine.generate_video_package(
+            topic, domain=domain, target_audience=target_audience, total_minutes=total_minutes
+        )
+
+    # 4. Mnemonic & Memory Palace Studio
+    def construct_memory_palace(self, topic: str) -> MnemonicPackage:
+        """Constructs high-retention phonetic acronyms and spatial memory palace journeys."""
+        return self.memory_palace.construct(topic)
+
+    # 5. Assignment Solver
     def solve_assignment(
         self,
         problem_statement: str,
@@ -61,7 +112,7 @@ class ProfAnna:
     ) -> AssignmentSolution:
         return self.solver.solve(problem_statement, subject=subject, total_marks=total_marks)
 
-    # 2. Solution Auditor & Checker ("City and Cheque")
+    # 6. Solution Auditor & Checker ("City and Cheque")
     def check_solution(
         self,
         problem_statement: str,
@@ -70,7 +121,7 @@ class ProfAnna:
     ) -> AuditReport:
         return self.checker.audit_solution(problem_statement, student_solution, total_marks=total_marks)
 
-    # 3. Anti-AI Publication PDF Generator
+    # 7. Anti-AI Publication PDF Generator
     def generate_pdf(
         self,
         solution_data: Dict[str, Any],
@@ -85,7 +136,7 @@ class ProfAnna:
             diagram_image_path=diagram_image_path,
         )
 
-    # 4. Diagram Generator with Resilient Web Fallback
+    # 8. Diagram Generator with Resilient Web Fallback
     def generate_diagram(
         self,
         topic: str,
@@ -94,7 +145,7 @@ class ProfAnna:
     ) -> Dict[str, Any]:
         return self.diagram_engine.generate_diagram(topic, diagram_type=diagram_type, filename_prefix=filename_prefix)
 
-    # 5. PPT Reference Cloner
+    # 9. PPT Reference Cloner
     def clone_presentation(
         self,
         reference_deck_schema: List[Dict[str, Any]],
@@ -103,7 +154,7 @@ class ProfAnna:
     ) -> Dict[str, str]:
         return self.ppt_engine.clone_and_replace(reference_deck_schema, new_project_data, output_filename=output_filename)
 
-    # 6. SIH / Hackathon / College Defense Optimizer
+    # 10. SIH / Hackathon / College Defense Optimizer
     def optimize_sih_deck(
         self,
         deck_slides: List[Dict[str, Any]],
@@ -113,7 +164,7 @@ class ProfAnna:
     ) -> SIHOptimizationResult:
         return self.sih_engine.analyze_and_optimize(deck_slides, ps_id=ps_id, project_title=project_title, ministry=ministry)
 
-    # 7. IEEE Access Research Paper Synthesizer
+    # 11. IEEE Access Research Paper Synthesizer
     def generate_ieee_paper(
         self,
         research_topic: str,
@@ -122,7 +173,7 @@ class ProfAnna:
     ) -> Dict[str, str]:
         return self.ieee_engine.generate_paper(research_topic, authors=authors, affiliations=affiliations)
 
-    # 8. Exam Forensics & Pareto 80/20 Checklist
+    # 12. Exam Forensics & Pareto 80/20 Checklist
     def analyze_exam_readiness(
         self,
         subject_name: str = "Operating Systems",
@@ -137,10 +188,10 @@ class ProfAnna:
             mastered_topic_ids=mastered_topic_ids,
         )
 
-    # 9. Feynman Intuition Mental Models
+    # 13. Feynman Intuition Mental Models
     def explain_feynman(self, concept_query: str) -> FeynmanIntuition:
         return self.feynman_engine.explain(concept_query)
 
-    # 10. Anki Spaced Repetition Flashcards
+    # 14. Anki Spaced Repetition Flashcards
     def generate_flashcards(self, subject: str) -> Dict[str, Any]:
         return self.flashcard_engine.generate_deck(subject)
